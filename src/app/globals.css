@@ -1,26 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-primary: #713323;
+  --color-on-primary: #ffffff;
+  --color-secondary: #735c00;
+  --color-on-secondary: #ffffff;
+  --color-tertiary: #464642;
+  --color-on-tertiary: #ffffff;
+  --color-background: #fff8f5;
+  --color-surface: #fff8f5;
+  --color-surface-bright: #fff8f5;
+  --color-surface-dim: #e1d8d4;
+  --color-surface-container: #f5ece7;
+  --color-surface-container-low: #fbf2ed;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #efe6e2;
+  --color-surface-container-highest: #e9e1dc;
+  --color-on-surface: #1e1b18;
+  --color-on-surface-variant: #53433f;
+  --color-outline: #86736e;
+  --color-outline-variant: #d9c1bc;
+  --color-primary-fixed: #ffdbd2;
+  --color-primary-fixed-dim: #ffb4a1;
+  --color-on-primary-container: #ffcbbd;
+  --color-primary-container: #8e4a38;
+  --color-secondary-container: #fed65b;
+  --color-on-secondary-container: #745c00;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-inverse-surface: #34302c;
+  --color-inverse-on-surface: #f8efea;
+  --color-inverse-primary: #ffb4a1;
+
+  --spacing-section-padding-desktop: 120px;
+  --spacing-section-padding-mobile: 64px;
+  --spacing-container-max: 1280px;
+  --spacing-gutter: 24px;
+  --spacing-unit: 8px;
+
+  --font-display-lg: "Playfair Display", serif;
+  --font-headline-lg: "Playfair Display", serif;
+  --font-headline-md: "Playfair Display", serif;
+  --font-headline-sm: "Playfair Display", serif;
+  --font-body-lg: "Manrope", sans-serif;
+  --font-body-md: "Manrope", sans-serif;
+  --font-label-md: "Manrope", sans-serif;
+  --font-label-sm: "Manrope", sans-serif;
+
+  --text-display-lg: 64px;
+  --text-display-lg--line-height: 72px;
+  --text-headline-lg: 48px;
+  --text-headline-lg--line-height: 56px;
+  --text-headline-md: 32px;
+  --text-headline-md--line-height: 40px;
+  --text-headline-sm: 24px;
+  --text-headline-sm--line-height: 32px;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 32px;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 28px;
+  --text-label-md: 14px;
+  --text-label-md--line-height: 20px;
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 248, 245, 0.8);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #fff8f5; }
+::-webkit-scrollbar-thumb { background: #d9c1bc; border-radius: 4px; }
+
+/* ===== Auth pages ===== */
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
 }
+
+.hero-overlay {
+  background: linear-gradient(to top, rgba(113,51,35,0.55) 0%, rgba(113,51,35,0.1) 60%, transparent 100%);
+}
+
+.stagger-up { animation: staggerUp 0.7s ease-out forwards; }
+@keyframes staggerUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.custom-input {
+  border: none;
+  border-bottom: 1px solid #d9c1bc;
+  background: transparent;
+  border-radius: 0;
+  padding: 10px 0;
+  font-size: 15px;
+  color: #1e1b18;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.3s;
+  outline: none;
+  width: 100%;
+}
+.custom-input:focus { border-bottom-color: #713323; box-shadow: none; }
+.custom-input::placeholder { color: rgba(83,67,63,0.4); }
+
+.btn-primary {
+  background: #713323;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 14px 20px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.btn-primary:hover { opacity: 0.9; }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-ghost {
+  background: transparent;
+  color: #53433f;
+  border: 1px solid rgba(217,193,188,0.6);
+  border-radius: 6px;
+  padding: 14px 20px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-ghost:hover { background: #fbf2ed; }
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid rgba(217,193,188,0.6);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  color: #1e1b18;
+  transition: background 0.2s;
+}
+.btn-social:hover { background: #fbf2ed; }
+
+.tab-btn {
+  flex: 1;
+  padding-bottom: 14px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  color: #86736e;
+  transition: all 0.3s;
+}
+.tab-btn:hover { color: #713323; }
+.tab-btn.active { color: #713323; border-bottom-color: #713323; }
+
+.otp-box {
+  width: 44px;
+  height: 52px;
+  text-align: center;
+  border: 1px solid #d9c1bc;
+  border-radius: 4px;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e1b18;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.otp-box:focus { border-color: #713323; box-shadow: 0 0 0 2px rgba(113,51,35,0.1); }
+
+.check-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #e7f4ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-sm {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.font-display { font-family: 'Playfair Display', serif; }
