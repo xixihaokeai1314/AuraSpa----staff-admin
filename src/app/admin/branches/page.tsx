@@ -20,7 +20,10 @@ export default function AdminBranches() {
     else if (!editId && branches.find((b) => b.name === form.name.trim())) e.name = "Tên chi nhánh đã tồn tại.";
     if (!form.address.trim()) e.address = "Vui lòng nhập địa chỉ.";
     if (!form.phone.trim()) e.phone = "Vui lòng nhập số điện thoại.";
+    else if (!/^[\d\s\-\+\(\)]{8,15}$/.test(form.phone)) e.phone = "Số điện thoại không hợp lệ.";
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Email không hợp lệ.";
+    if (!form.openHours.trim()) e.openHours = "Vui lòng nhập giờ mở cửa.";
+    else if (!/^\d{2}:\d{2}\s*-\s*\d{2}:\d{2}$/.test(form.openHours.trim())) e.openHours = "Định dạng: HH:MM - HH:MM (VD: 08:00 - 21:00)";
     if (!form.managerId) e.managerId = "Vui lòng chọn quản lý.";
     setErrors(e);
     return Object.keys(e).length === 0;

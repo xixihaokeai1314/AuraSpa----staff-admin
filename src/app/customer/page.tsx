@@ -134,7 +134,7 @@ export default function CustomerHome() {
           <div className="flex items-center justify-between mb-12">
             <h2 className="font-headline-md text-headline-md text-primary">Gợi ý dành riêng cho bạn</h2>
             <div className="h-px flex-1 bg-outline-variant/30 mx-8 hidden md:block"></div>
-            <Link className="text-primary font-label-md text-label-md flex items-center gap-2 hover:underline" href="#">
+            <Link className="text-primary font-label-md text-label-md flex items-center gap-2 hover:underline" href="/services">
               Xem tất cả dịch vụ
               <span className="material-symbols-outlined">chevron_right</span>
             </Link>

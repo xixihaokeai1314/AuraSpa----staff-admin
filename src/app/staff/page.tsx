@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import {
   TODAY_APPOINTMENTS, ROOMS, CUSTOMER_HEALTH_RECORDS,
@@ -33,7 +34,7 @@ export default function StaffDashboard() {
     setAppts((prev) =>
       prev.map((a) => a.id === id ? { ...a, status: "completed" as AppointmentStatus } : a)
     );
-    showToast("✓ Buổi trị liệu đã hoàn thành");
+    showToast("✓ Buổi trị liệu đã hoàn thành — Hãy tạo hóa đơn cho khách hàng");
   };
 
   const handleSearchCheckin = () => {
@@ -181,7 +182,13 @@ export default function StaffDashboard() {
                         </button>
                       )}
                       {appt.status === "completed" && (
-                        <span className="material-symbols-outlined text-green-600" style={{ fontSize: 20, fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                        <div className="flex items-center gap-2">
+                          <span className="material-symbols-outlined text-green-600" style={{ fontSize: 20, fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                          <Link href="/staff/invoice" className="text-xs text-primary font-bold hover:underline flex items-center gap-0.5">
+                            <span className="material-symbols-outlined" style={{ fontSize: 14 }}>receipt_long</span>
+                            Tạo HĐ
+                          </Link>
+                        </div>
                       )}
                     </div>
                   </div>

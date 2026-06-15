@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { TODAY_APPOINTMENTS, SERVICES, formatCurrency, getStatusColor, getStatusLabel } from "@/lib/mock-data";
+import { TODAY_APPOINTMENTS, formatCurrency, getStatusColor, getStatusLabel } from "@/lib/mock-data";
 
 type PayMethod = "cash" | "card" | "transfer";
 

@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
-import { PROMOTIONS, SERVICES, BRANCHES } from "@/lib/mock-data";
+import { PROMOTIONS } from "@/lib/mock-data";
+
+const TODAY = new Date().toISOString().split("T")[0];
 
 type PromoForm = {
   name: string; code: string; discountType: string; discountValue: string;
@@ -31,6 +33,7 @@ export default function AdminPromotions() {
     if (!form.startDate) e.startDate = "Vui lòng chọn ngày bắt đầu.";
     if (!form.endDate) e.endDate = "Vui lòng chọn ngày kết thúc.";
     if (form.startDate && form.endDate && form.endDate < form.startDate) e.endDate = "Ngày kết thúc phải sau ngày bắt đầu.";
+    if (form.startDate && form.endDate && form.endDate === form.startDate) e.endDate = "Ngày kết thúc phải khác ngày bắt đầu.";
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -165,14 +168,14 @@ export default function AdminPromotions() {
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Ngày bắt đầu</label>
-                  <input type="date" className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary ${errors.startDate ? "border-error" : "border-outline-variant"}`}
+                  <input type="date" min={TODAY} className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary ${errors.startDate ? "border-error" : "border-outline-variant"}`}
                     value={form.startDate} onChange={(e) => { setForm((p) => ({ ...p, startDate: e.target.value })); setErrors((p) => ({ ...p, startDate: "" })); }} />
                   {errors.startDate && <p className="text-error text-xs mt-1">{errors.startDate}</p>}
                 </div>
                 <div>
                   <label className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Ngày kết thúc</label>
                   <input type="date" className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary ${errors.endDate ? "border-error" : "border-outline-variant"}`}
-                    value={form.endDate} min={form.startDate} onChange={(e) => { setForm((p) => ({ ...p, endDate: e.target.value })); setErrors((p) => ({ ...p, endDate: "" })); }} />
+                    value={form.endDate} min={form.startDate || TODAY} onChange={(e) => { setForm((p) => ({ ...p, endDate: e.target.value })); setErrors((p) => ({ ...p, endDate: "" })); }} />
                   {errors.endDate && <p className="text-error text-xs mt-1">{errors.endDate}</p>}
                 </div>
               </div>

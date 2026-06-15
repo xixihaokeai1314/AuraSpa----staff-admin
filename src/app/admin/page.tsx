@@ -1,13 +1,12 @@
 "use client";
 import Link from "next/link";
-import { BRANCHES, STAFF_LIST, MONTHLY_REVENUE, SERVICES, PROMOTIONS, formatCurrency } from "@/lib/mock-data";
+import { BRANCHES, MONTHLY_REVENUE, SERVICES, PROMOTIONS, formatCurrency } from "@/lib/mock-data";
 import KpiCard from "@/components/dashboard/KpiCard";
 
 export default function AdminDashboard() {
   const totalRevenue = MONTHLY_REVENUE[MONTHLY_REVENUE.length - 1].revenue;
   const totalProfit = MONTHLY_REVENUE[MONTHLY_REVENUE.length - 1].profit;
   const activeBranches = BRANCHES.filter((b) => b.status === "active").length;
-  const totalStaff = STAFF_LIST.filter((s) => s.status === "active").length;
   const maxRevenue = Math.max(...MONTHLY_REVENUE.map((m) => m.revenue));
 
   return (
@@ -31,10 +30,10 @@ export default function AdminDashboard() {
 
       {/* KPI */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCard title="Lợi nhuận tháng 6" value={formatCurrency(totalProfit)} icon="payments" badge="+18.2%" badgeColor="green" iconBg="bg-primary/10 text-primary" />
-        <KpiCard title="Doanh thu tháng 6" value={formatCurrency(totalRevenue)} icon="account_balance" badge="+12%" badgeColor="green" iconBg="bg-secondary-container/30 text-secondary" />
-        <KpiCard title="Chi nhánh hoạt động" value={`${activeBranches}/${BRANCHES.length}`} icon="storefront" badgeColor="default" iconBg="bg-tertiary-fixed/30 text-tertiary" />
-        <KpiCard title="Chỉ số CSAT" value="94%" icon="star" badge="Rất tốt" badgeColor="green" iconBg="bg-secondary-container/30 text-secondary" />
+        <Link href="/admin/revenue"><KpiCard title="Lợi nhuận tháng 6" value={formatCurrency(totalProfit)} icon="payments" badge="+18.2%" badgeColor="green" iconBg="bg-primary/10 text-primary" /></Link>
+        <Link href="/admin/revenue"><KpiCard title="Doanh thu tháng 6" value={formatCurrency(totalRevenue)} icon="account_balance" badge="+12%" badgeColor="green" iconBg="bg-secondary-container/30 text-secondary" /></Link>
+        <Link href="/admin/branches"><KpiCard title="Chi nhánh hoạt động" value={`${activeBranches}/${BRANCHES.length}`} icon="storefront" badgeColor="default" iconBg="bg-tertiary-fixed/30 text-tertiary" /></Link>
+        <Link href="/admin/rankings"><KpiCard title="Chỉ số CSAT" value="94%" icon="star" badge="Rất tốt" badgeColor="green" iconBg="bg-secondary-container/30 text-secondary" /></Link>
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">

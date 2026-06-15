@@ -10,7 +10,6 @@ export default function ManagerShifts() {
   const showToast = (msg: string) => { setToast(msg); setTimeout(() => setToast(""), 3000); };
 
   const pending = shifts.filter((s) => s.status === "pending");
-  const approved = shifts.filter((s) => s.status === "approved");
 
   const handleApprove = (id: string) => {
     setShifts((p) => p.map((s) => s.id === id ? { ...s, status: "approved" as ShiftStatus } : s));

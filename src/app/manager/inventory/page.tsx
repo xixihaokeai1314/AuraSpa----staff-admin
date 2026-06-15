@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { INVENTORY, formatCurrency } from "@/lib/mock-data";
+import { INVENTORY } from "@/lib/mock-data";
 
 export default function ManagerInventory() {
   const [items, setItems] = useState(INVENTORY.filter((i) => i.branchId === "b001"));

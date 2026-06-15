@@ -26,10 +26,10 @@ export default function ManagerDashboard() {
 
       {/* KPI cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCard title="Doanh thu hôm nay" value={formatCurrency(todayRevenue)} icon="monetization_on" badge="+12.5%" badgeColor="green" iconBg="bg-primary/10 text-primary" />
-        <KpiCard title="Lịch hẹn hôm nay" value={`${TODAY_APPOINTMENTS.length} lịch`} icon="calendar_today" badge={`${pendingAppts} chờ`} badgeColor="yellow" iconBg="bg-secondary-container/30 text-secondary" />
-        <KpiCard title="Nhân sự đang trực" value={`${activeStaff}/${STAFF_LIST.length} người`} icon="groups" badgeColor="default" iconBg="bg-tertiary-fixed/30 text-tertiary" />
-        <KpiCard title="Tồn kho cảnh báo" value={`${lowStock} mặt hàng`} icon="warning" badge={lowStock > 0 ? "Cần nhập" : "Ổn"} badgeColor={lowStock > 0 ? "red" : "green"} iconBg="bg-error-container/30 text-error" />
+        <Link href="/manager/reports"><KpiCard title="Doanh thu hôm nay" value={formatCurrency(todayRevenue)} icon="monetization_on" badge="+12.5%" badgeColor="green" iconBg="bg-primary/10 text-primary" /></Link>
+        <Link href="/manager/bookings"><KpiCard title="Lịch hẹn hôm nay" value={`${TODAY_APPOINTMENTS.length} lịch`} icon="calendar_today" badge={`${pendingAppts} chờ`} badgeColor="yellow" iconBg="bg-secondary-container/30 text-secondary" /></Link>
+        <Link href="/manager/shifts"><KpiCard title="Nhân sự đang trực" value={`${activeStaff}/${STAFF_LIST.length} người`} icon="groups" badgeColor="default" iconBg="bg-tertiary-fixed/30 text-tertiary" /></Link>
+        <Link href="/manager/inventory"><KpiCard title="Tồn kho cảnh báo" value={`${lowStock} mặt hàng`} icon="warning" badge={lowStock > 0 ? "Cần nhập" : "Ổn"} badgeColor={lowStock > 0 ? "red" : "green"} iconBg="bg-error-container/30 text-error" /></Link>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -37,7 +37,7 @@ export default function ManagerDashboard() {
         <div className="lg:col-span-2 bg-white rounded-2xl p-6 border border-outline-variant/20">
           <div className="flex items-center justify-between mb-5">
             <h3 className="font-headline-sm text-headline-sm text-on-surface">Lịch hẹn hôm nay</h3>
-            <Link href="/manager/reassign" className="font-label-md text-label-md text-primary hover:underline">Phân công lại</Link>
+            <Link href="/manager/bookings" className="font-label-md text-label-md text-primary hover:underline">Xem tất cả</Link>
           </div>
           <div className="space-y-3">
             {TODAY_APPOINTMENTS.slice(0, 5).map((a) => (

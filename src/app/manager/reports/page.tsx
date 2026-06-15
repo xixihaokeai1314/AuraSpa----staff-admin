@@ -1,5 +1,5 @@
 "use client";
-import { TODAY_APPOINTMENTS, STAFF_LIST, MONTHLY_REVENUE, formatCurrency } from "@/lib/mock-data";
+import { STAFF_LIST, MONTHLY_REVENUE, formatCurrency } from "@/lib/mock-data";
 
 export default function ManagerReports() {
   const totalRevenue = MONTHLY_REVENUE.reduce((s, m) => s + m.revenue, 0);
