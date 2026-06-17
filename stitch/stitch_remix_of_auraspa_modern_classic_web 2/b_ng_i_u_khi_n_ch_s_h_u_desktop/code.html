@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AuraSpa - Bảng Điều Khiển Chủ Sở Hữu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#574500",
+                    "primary": "#713323",
+                    "tertiary-container": "#5e5d59",
+                    "surface-dim": "#e1d8d4",
+                    "primary-fixed-dim": "#ffb4a1",
+                    "on-surface-variant": "#53433f",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1e1b18",
+                    "on-secondary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#fbf2ed",
+                    "surface-tint": "#904b39",
+                    "inverse-on-surface": "#f8efea",
+                    "secondary-fixed": "#ffe088",
+                    "surface-variant": "#e9e1dc",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "background": "#fff8f5",
+                    "secondary-container": "#fed65b",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#d9c1bc",
+                    "on-secondary-container": "#745c00",
+                    "surface-bright": "#fff8f5",
+                    "secondary": "#735c00",
+                    "tertiary-fixed": "#e5e2dd",
+                    "surface-container": "#f5ece7",
+                    "surface": "#fff8f5",
+                    "tertiary": "#464642",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "primary-container": "#8e4a38",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-tertiary-container": "#d9d6d1",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e9e1dc",
+                    "outline": "#86736e",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#3a0a01",
+                    "on-background": "#1e1b18",
+                    "secondary-fixed-dim": "#e9c349",
+                    "primary-fixed": "#ffdbd2",
+                    "on-primary-container": "#ffcbbd",
+                    "inverse-surface": "#34302c",
+                    "inverse-primary": "#ffb4a1",
+                    "on-primary-fixed-variant": "#723424",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#efe6e2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "section-padding-desktop": "120px",
+                    "unit": "8px",
+                    "section-padding-mobile": "64px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "body-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { background-color: #fff8f5; color: #1e1b18; }
+        .glass-nav { backdrop-filter: blur(12px); background-color: rgba(255, 248, 245, 0.8); }
+        .sidebar-active { background-color: #713323; color: #ffffff; border-radius: 0.25rem; }
+        .bento-card { transition: all 0.3s ease; }
+        .bento-card:hover { transform: translateY(-4px); box-shadow: 0px 10px 30px rgba(45, 41, 38, 0.05); }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation (Mandatory for Admin Dashboards) -->
+<aside class="w-64 border-r border-outline-variant/30 flex-col hidden md:flex h-screen sticky top-0 bg-surface-container-low">
+<div class="p-8">
+<span class="font-headline-md text-headline-md text-primary tracking-tight">AuraSpa</span>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 sidebar-active" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Tổng quan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+<span class="font-label-md text-label-md">Chi nhánh</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md text-label-md">Báo cáo chiến lược</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Quản lý chi phí</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Nhân sự</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Cài đặt hệ thống</span>
+</a>
+</nav>
+<div class="p-6 border-t border-outline-variant/30">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="A professional portrait of a business executive in a high-end, minimalist office setting. The lighting is soft and natural, reflecting a sophisticated atmosphere. The person has a serene and confident expression, styled with modern elegance. The background features warm, neutral tones that align with the AuraSpa brand's elevated serenity aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9BixXr1O6G1zDTFGL6B4tM-xd1KF6DjOuMWsZVc3Vtnxm-Nml4mDCVn2sgU3wy1PWFo0UwA4nHzFc4GfJ4W_a87OcTYpZ3V01h2oCgKIXD2wuQwnmeF5ZzoK06yL7EhvMKUfRfGg8RgvNS9SdJjZ7BByPdbWkTI68U1azuwrtXLpS41lTpHxb7awZlJ4-xXv3fLlnkzF3ZJAWtdJbibYS6IeWzOB0wA7zHTqIKxVzlgKODj6Konuqhhq7fPFVaDmrWzOENP7aVOA"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Minh Nguyễn</p>
+<p class="text-[10px] uppercase tracking-wider text-outline">Chủ sở hữu</p>
+</div>
+</div>
+<button class="w-full text-left text-on-surface-variant hover:text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-sm text-label-sm">Đăng xuất</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 min-w-0 flex flex-col">
+<!-- Top Header -->
+<header class="h-20 glass-nav border-b border-outline-variant/30 px-gutter flex items-center justify-between sticky top-0 z-50">
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Chiến lược &amp; Hiệu suất</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Cập nhật: 12/10/2024</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="bg-surface-container border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-64" placeholder="Tìm kiếm chi nhánh..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+                        Xuất báo cáo (PDF)
+                    </button>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-gutter max-w-container-max mx-auto w-full space-y-gutter">
+<!-- Performance Overview: Asymmetric Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Main Growth Chart -->
+<div class="md:col-span-8 bg-surface-container-low p-8 rounded-xl border border-outline-variant/20 bento-card">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Tăng trưởng doanh thu</h3>
+<p class="text-on-surface-variant text-body-md">Tổng hợp 5 chi nhánh tại TP.HCM &amp; Hà Nội</p>
+</div>
+<select class="bg-transparent border-b border-outline focus:border-primary text-sm font-label-md py-1">
+<option>6 tháng qua</option>
+<option>Năm nay</option>
+</select>
+</div>
+<div class="h-64 flex items-end justify-between gap-2">
+<!-- Simple CSS Bar Chart Mockup -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-variant rounded-t-lg h-[40%] group-hover:bg-primary transition-colors"></div>
+<span class="text-[10px] text-outline">T5</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-variant rounded-t-lg h-[65%] group-hover:bg-primary transition-colors"></div>
+<span class="text-[10px] text-outline">T6</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-variant rounded-t-lg h-[55%] group-hover:bg-primary transition-colors"></div>
+<span class="text-[10px] text-outline">T7</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-variant rounded-t-lg h-[80%] group-hover:bg-primary transition-colors"></div>
+<span class="text-[10px] text-outline">T8</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-surface-variant rounded-t-lg h-[90%] group-hover:bg-primary transition-colors"></div>
+<span class="text-[10px] text-outline">T9</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary rounded-t-lg h-[100%]"></div>
+<span class="text-[10px] text-outline font-bold">T10</span>
+</div>
+</div>
+</div>
+<!-- Key Metrics Cards (Stacked) -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="bg-secondary-container p-6 rounded-xl border border-secondary/20 bento-card flex items-start justify-between">
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-secondary-container">Tổng doanh thu</p>
+<h4 class="font-display-lg text-[32px] text-on-secondary-container mt-1">2.45 tỷ</h4>
+<div class="flex items-center gap-1 text-green-700 mt-2">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-xs font-bold">+12.5%</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-secondary-container/50 text-4xl" data-icon="payments">payments</span>
+</div>
+<div class="bg-surface-container-high p-6 rounded-xl border border-outline-variant/20 bento-card flex items-start justify-between">
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Lượt khách hàng mới</p>
+<h4 class="font-display-lg text-[32px] text-on-surface mt-1">1,208</h4>
+<div class="flex items-center gap-1 text-green-700 mt-2">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-xs font-bold">+8.2%</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline/50 text-4xl" data-icon="person_add">person_add</span>
+</div>
+</div>
+</div>
+<!-- Multi-Branch Performance & Expenses -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Expense Breakdown Bento Piece -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/20 bento-card">
+<h3 class="font-headline-sm text-headline-sm mb-6">Cơ cấu chi phí</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm">Nhân sự &amp; Lương</span>
+<span class="text-sm font-bold">45%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[45%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm">Vật tư &amp; Sản phẩm</span>
+<span class="text-sm font-bold">20%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary/60 h-full w-[20%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm">Mặt bằng &amp; Vận hành</span>
+<span class="text-sm font-bold">25%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary/40 h-full w-[25%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm">Marketing</span>
+<span class="text-sm font-bold">10%</span>
+</div>
+<div class="w-full bg-surface-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary/20 h-full w-[10%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Branch Performance Table (Bento Large) -->
+<div class="lg:col-span-2 bg-surface-container-low p-8 rounded-xl border border-outline-variant/20 bento-card overflow-hidden">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline-sm text-headline-sm">Hiệu suất chi nhánh</h3>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1">
+                                Xem tất cả <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="border-b border-outline-variant/30">
+<tr>
+<th class="pb-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Chi nhánh</th>
+<th class="pb-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Trưởng bộ phận</th>
+<th class="pb-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">KPI Hoàn thành</th>
+<th class="pb-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr>
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="font-label-md text-label-md">Thảo Điền, Quận 2</span>
+</div>
+</td>
+<td class="py-4 text-sm">Hương Giang</td>
+<td class="py-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold">98%</span>
+<div class="w-24 bg-surface-variant h-1 rounded-full">
+<div class="bg-green-500 h-full w-[98%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4"><span class="bg-green-100 text-green-800 text-[10px] px-2 py-0.5 rounded-full uppercase font-bold">Vượt định mức</span></td>
+</tr>
+<tr>
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="font-label-md text-label-md">Phú Mỹ Hưng, Q.7</span>
+</div>
+</td>
+<td class="py-4 text-sm">Quốc Anh</td>
+<td class="py-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold">85%</span>
+<div class="w-24 bg-surface-variant h-1 rounded-full">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4"><span class="bg-surface-variant text-on-surface-variant text-[10px] px-2 py-0.5 rounded-full uppercase font-bold">Ổn định</span></td>
+</tr>
+<tr>
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<span class="font-label-md text-label-md">Hoàn Kiếm, HN</span>
+</div>
+</td>
+<td class="py-4 text-sm">Lê Nam</td>
+<td class="py-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold">72%</span>
+<div class="w-24 bg-surface-variant h-1 rounded-full">
+<div class="bg-secondary h-full w-[72%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4"><span class="bg-yellow-100 text-yellow-800 text-[10px] px-2 py-0.5 rounded-full uppercase font-bold">Cần cải thiện</span></td>
+</tr>
+<tr>
+<td class="py-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="font-label-md text-label-md">Đà Nẵng Beach</span>
+</div>
+</td>
+<td class="py-4 text-sm">Mai Phương</td>
+<td class="py-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold">92%</span>
+<div class="w-24 bg-surface-variant h-1 rounded-full">
+<div class="bg-primary h-full w-[92%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4"><span class="bg-surface-variant text-on-surface-variant text-[10px] px-2 py-0.5 rounded-full uppercase font-bold">Ổn định</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Strategic Insights Row -->
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-gutter pb-12">
+<div class="lg:col-span-1 bg-primary text-on-primary p-8 rounded-xl bento-card relative overflow-hidden group">
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl opacity-10 group-hover:rotate-12 transition-transform" data-icon="psychology">psychology</span>
+<h4 class="font-headline-sm text-headline-sm mb-4">Gợi ý từ AI</h4>
+<p class="text-sm leading-relaxed opacity-90">Dựa trên dữ liệu tháng 10, bạn nên tập trung vào các gói liệu trình trị liệu đá nóng tại chi nhánh Quận 2 để tối ưu hóa công suất phòng vào buổi sáng.</p>
+<button class="mt-8 bg-white/20 hover:bg-white/30 backdrop-blur-md px-4 py-2 rounded font-label-sm text-label-sm transition-colors">Xem chi tiết</button>
+</div>
+<div class="lg:col-span-3 bg-surface-container-low rounded-xl border border-outline-variant/20 bento-card relative h-full flex flex-col md:flex-row overflow-hidden">
+<div class="p-8 flex-1">
+<h3 class="font-headline-sm text-headline-sm mb-2">Bản đồ phân bổ khách hàng</h3>
+<p class="text-on-surface-variant text-sm mb-6">Mật độ khách hàng tại khu vực TP.HCM</p>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary/10 rounded flex items-center justify-center text-primary font-bold">01</div>
+<div class="flex-1 border-b border-outline-variant/30 pb-2">
+<p class="font-label-md text-label-md">Khu vực trung tâm (Q.1, Q.3)</p>
+<p class="text-xs text-outline">420 khách hàng hoạt động</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary/10 rounded flex items-center justify-center text-primary font-bold">02</div>
+<div class="flex-1 border-b border-outline-variant/30 pb-2">
+<p class="font-label-md text-label-md">Đông Sài Gòn (Thủ Đức, Q.2)</p>
+<p class="text-xs text-outline">285 khách hàng hoạt động</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-primary/10 rounded flex items-center justify-center text-primary font-bold">03</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md">Nam Sài Gòn (Q.7, Nhà Bè)</p>
+<p class="text-xs text-outline">350 khách hàng hoạt động</p>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 min-h-[250px] relative">
+<img alt="Map View" class="w-full h-full object-cover grayscale opacity-50 hover:grayscale-0 transition-all duration-700" data-alt="A stylized, minimalist topographical map of a metropolitan area, designed with elegant thin lines and a warm beige and charcoal color palette. The map features subtle glowing dots representing customer hotspots, reflecting a high-tech yet organic data visualization style suitable for a luxury spa brand's dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNS15wPL8apfj8dFSLz_N-9IcgX2yk-cAn0Vvk39nELJujnFuQJxVM4BuX_pHsIHespmSGasidWEnX1ZZcAQhkuGUSjvlgFybgQ1YVb8ydmvnNQpIR00Zge3kWvv8uc2kVqdyneDxV_wDToCX2mjFHM6G44NNqSNHvJtTUnVC3DQhBhzvIDdPcusKiHnKxWYIrx5whP8jRR4b4onEJd-v8slx8yPrIhyLSZBmenVavroyp0CNZRptOMF9JhZdTsCWXtLogqxTI6Bw"/>
+<div class="absolute inset-0 bg-gradient-to-l from-transparent to-surface-container-low hidden md:block"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer (from Shared Components) -->
+<footer class="bg-surface-container dark:bg-surface-dim full-width py-section-padding-desktop">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-sm text-headline-sm text-primary dark:text-inverse-primary">AuraSpa</span>
+<p class="mt-4 text-on-surface-variant font-body-md">© 2024 AuraSpa. Elevated Serenity in Wellness.</p>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-primary mb-4">Hệ thống</h5>
+<ul class="space-y-2">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300 focus:underline underline-offset-4" href="#">Bảo mật dữ liệu</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300 focus:underline underline-offset-4" href="#">Điều khoản sử dụng</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-primary mb-4">Liên hệ</h5>
+<ul class="space-y-2">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300 focus:underline underline-offset-4" href="#">Hỗ trợ kỹ thuật</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300 focus:underline underline-offset-4" href="#">Tuyển dụng</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-primary mb-4">Văn phòng chính</h5>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+                            Lầu 24, Bitexco Financial Tower,<br/>
+                            Số 2 Hải Triều, Quận 1,<br/>
+                            TP. Hồ Chí Minh
+                        </p>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Subtle Hover Animations for Bento Cards
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'rgba(113, 51, 35, 0.4)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = 'rgba(217, 193, 188, 0.2)';
+            });
+        });
+
+        // Time Update Simulation
+        const timeDisplay = document.querySelector('header p.uppercase');
+        const updateTime = () => {
+            const now = new Date();
+            const date = now.toLocaleDateString('vi-VN');
+            const time = now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+            timeDisplay.textContent = `Cập nhật: ${date} | ${time}`;
+        };
+        setInterval(updateTime, 60000);
+        updateTime();
+    </script>
+</body></html>

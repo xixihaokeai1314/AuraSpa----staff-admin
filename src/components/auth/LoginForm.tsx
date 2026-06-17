@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { validateEmail } from "@/lib/auth";
+import { validateEmail } from "@/lib/validators";
 
 interface Props {
   onSwitchTab: () => void;
@@ -429,7 +429,7 @@ export default function LoginForm({ onSwitchTab }: Props) {
           customer@auraspa.vn / Customer1<br />
           staff@auraspa.vn / Staff123<br />
           manager@auraspa.vn / Manager1<br />
-          owner@auraspa.vn / Owner123
+          admin@auraspa.vn / Owner123
         </p>
       </div>
     </form>

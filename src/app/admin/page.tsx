@@ -1,13 +1,42 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
-import { BRANCHES, MONTHLY_REVENUE, SERVICES, PROMOTIONS, formatCurrency } from "@/lib/mock-data";
+import { BRANCHES, MONTHLY_REVENUE, SERVICES, PROMOTIONS, TODAY_APPOINTMENTS, STAFF_LIST, INVENTORY, formatCurrency, getStatusColor, getStatusLabel } from "@/lib/mock-data";
 import KpiCard from "@/components/dashboard/KpiCard";
 
+type ApprovalStatus = "pending" | "approved" | "rejected";
+interface PendingAppt {
+  id: string;
+  customerName: string;
+  service: string;
+  time: string;
+  duration: number;
+  status: ApprovalStatus;
+}
+
+// Mock pending approvals queue (new bookings awaiting admin review)
+const INITIAL_PENDING: PendingAppt[] = [
+  { id: "pa001", customerName: "Lê Thu Hà", service: "Massage Đá Nóng Núi Lửa", time: "14:00 Hôm nay", duration: 90, status: "pending" },
+  { id: "pa002", customerName: "Hoàng Minh", service: "Xông Hơi Thảo Dược", time: "15:30 Hôm nay", duration: 60, status: "pending" },
+  { id: "pa003", customerName: "Trần Bảo Linh", service: "Gói Tâm An (Serenity)", time: "10:00 Ngày mai", duration: 180, status: "pending" },
+  { id: "pa004", customerName: "Nguyễn Quang Huy", service: "Chăm Sóc Da Mặt Chuyên Sâu", time: "11:30 Ngày mai", duration: 60, status: "pending" },
+  { id: "pa005", customerName: "Phạm Thị Lan", service: "Trị Liệu Cổ Vai Gáy", time: "09:00 Ngày mai", duration: 45, status: "pending" },
+];
+
 export default function AdminDashboard() {
+  const [pendingAppts, setPendingAppts] = useState<PendingAppt[]>(INITIAL_PENDING);
+
   const totalRevenue = MONTHLY_REVENUE[MONTHLY_REVENUE.length - 1].revenue;
   const totalProfit = MONTHLY_REVENUE[MONTHLY_REVENUE.length - 1].profit;
   const activeBranches = BRANCHES.filter((b) => b.status === "active").length;
   const maxRevenue = Math.max(...MONTHLY_REVENUE.map((m) => m.revenue));
+
+  const pendingCount = pendingAppts.filter((a) => a.status === "pending").length;
+
+  const handleApprove = (id: string) =>
+    setPendingAppts((prev) => prev.map((a) => (a.id === id ? { ...a, status: "approved" } : a)));
+  const handleReject = (id: string) =>
+    setPendingAppts((prev) => prev.map((a) => (a.id === id ? { ...a, status: "rejected" } : a)));
 
   return (
     <div className="p-6 max-w-container-max mx-auto space-y-8">
@@ -33,7 +62,7 @@ export default function AdminDashboard() {
         <Link href="/admin/revenue"><KpiCard title="Lợi nhuận tháng 6" value={formatCurrency(totalProfit)} icon="payments" badge="+18.2%" badgeColor="green" iconBg="bg-primary/10 text-primary" /></Link>
         <Link href="/admin/revenue"><KpiCard title="Doanh thu tháng 6" value={formatCurrency(totalRevenue)} icon="account_balance" badge="+12%" badgeColor="green" iconBg="bg-secondary-container/30 text-secondary" /></Link>
         <Link href="/admin/branches"><KpiCard title="Chi nhánh hoạt động" value={`${activeBranches}/${BRANCHES.length}`} icon="storefront" badgeColor="default" iconBg="bg-tertiary-fixed/30 text-tertiary" /></Link>
-        <Link href="/admin/rankings"><KpiCard title="Chỉ số CSAT" value="94%" icon="star" badge="Rất tốt" badgeColor="green" iconBg="bg-secondary-container/30 text-secondary" /></Link>
+        <KpiCard title="Chờ phê duyệt" value={`${pendingCount} lịch hẹn`} icon="how_to_reg" badge={pendingCount > 0 ? "Mới" : "Ổn"} badgeColor={pendingCount > 0 ? "red" : "green"} iconBg="bg-error-container/30 text-error" />
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
@@ -114,6 +143,98 @@ export default function AdminDashboard() {
           </div>
           <button className="mt-4 w-full py-3 bg-on-surface text-white font-label-md text-label-md rounded-xl hover:opacity-90 transition-opacity text-sm">
             Xác nhận & Áp dụng
+          </button>
+        </div>
+      </div>
+
+      {/* ── Pending Approvals + Staff Quick View ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Pending approvals */}
+        <div className="bg-white rounded-2xl border border-outline-variant/20 flex flex-col overflow-hidden">
+          <div className="flex justify-between items-center px-6 py-4 border-b border-outline-variant/10">
+            <h3 className="font-headline-sm text-headline-sm text-on-surface">Chờ phê duyệt</h3>
+            {pendingCount > 0 && (
+              <span className="bg-error text-on-error text-xs font-bold px-2 py-0.5 rounded-full">{pendingCount} Mới</span>
+            )}
+          </div>
+          <div className="flex-1 overflow-y-auto max-h-80 divide-y divide-outline-variant/10">
+            {pendingAppts.map((appt) => (
+              <div
+                key={appt.id}
+                className={`px-6 py-4 flex items-start gap-4 transition-colors ${
+                  appt.status !== "pending" ? "opacity-50" : "hover:bg-surface-container-lowest"
+                }`}
+              >
+                <div className="flex-1 min-w-0">
+                  <div className="flex justify-between items-start mb-1">
+                    <p className="font-label-md text-label-md text-on-surface font-bold">{appt.customerName}</p>
+                    <span className="font-label-sm text-label-sm text-on-surface-variant shrink-0 ml-2">{appt.time}</span>
+                  </div>
+                  <p className="text-xs text-on-surface-variant">{appt.service} · {appt.duration} phút</p>
+                  {appt.status !== "pending" && (
+                    <span className={`inline-block mt-1 text-xs font-bold px-2 py-0.5 rounded-full ${
+                      appt.status === "approved" ? "bg-green-50 text-green-700" : "bg-error-container text-error"
+                    }`}>
+                      {appt.status === "approved" ? "Đã duyệt" : "Đã từ chối"}
+                    </span>
+                  )}
+                </div>
+                {appt.status === "pending" && (
+                  <div className="flex gap-2 shrink-0">
+                    <button
+                      onClick={() => handleApprove(appt.id)}
+                      className="px-3 py-1.5 text-xs font-bold border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-on-primary transition-colors"
+                    >
+                      Duyệt
+                    </button>
+                    <button
+                      onClick={() => handleReject(appt.id)}
+                      className="px-3 py-1.5 text-xs font-bold text-on-surface-variant hover:text-error transition-colors"
+                    >
+                      Từ chối
+                    </button>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="px-6 py-3 border-t border-outline-variant/10">
+            <button className="text-primary font-label-md text-label-md text-sm hover:underline flex items-center gap-1">
+              Xem tất cả yêu cầu
+              <span className="material-symbols-outlined" style={{ fontSize: 14 }}>arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Staff quick view */}
+        <div className="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/20">
+          <div className="flex justify-between items-center mb-5">
+            <h3 className="font-headline-sm text-headline-sm text-on-surface">Nhân sự đang trực</h3>
+            <Link href="/admin/managers" className="text-xs font-bold text-primary flex items-center gap-1 hover:underline">
+              <span className="material-symbols-outlined" style={{ fontSize: 14 }}>add</span> Thêm mới
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            {STAFF_LIST.slice(0, 4).map((s) => (
+              <div key={s.id} className="p-4 bg-white rounded-xl border border-outline-variant/20 flex flex-col items-center text-center">
+                <div className="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold mb-2">
+                  {s.name.split(" ").pop()?.[0]}
+                </div>
+                <p className="font-label-md text-label-md text-on-surface font-bold text-sm">{s.name}</p>
+                <p className={`text-xs font-bold uppercase mt-1 ${s.status === "active" ? "text-green-600" : "text-error"}`}>
+                  {s.status === "active" ? "Đang trực" : "Ngoài ca"}
+                </p>
+                {/* Workload bar */}
+                <div className="flex gap-1 w-full mt-2">
+                  {[...Array(4)].map((_, i) => (
+                    <div key={i} className={`h-1 flex-1 rounded-full ${i < Math.round(s.rating - 0.5) ? "bg-primary" : "bg-outline-variant/30"}`} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <button className="w-full py-3 bg-surface-container rounded-xl text-xs font-bold text-on-surface-variant hover:bg-surface-container-high transition-colors">
+            Quản lý toàn bộ {STAFF_LIST.length} nhân viên
           </button>
         </div>
       </div>

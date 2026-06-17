@@ -14,7 +14,7 @@ export default function AdminRankings() {
   return (
     <div className="p-6 max-w-container-max mx-auto space-y-8">
       <div className="flex items-center justify-between">
-        <h1 className="font-headline-md text-headline-md text-primary">Xếp hạng hiệu suất (UC-37)</h1>
+        <h1 className="font-headline-md text-headline-md text-primary">Xếp hạng hiệu suất</h1>
         <div className="flex bg-surface-container rounded-full p-1 border border-outline-variant/20">
           {(["month", "quarter", "year"] as const).map((p) => (
             <button key={p} onClick={() => setPeriod(p)}

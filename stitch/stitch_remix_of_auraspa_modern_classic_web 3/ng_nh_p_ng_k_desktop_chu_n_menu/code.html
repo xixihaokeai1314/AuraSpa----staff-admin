@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AuraSpa - Đăng nhập &amp; Đăng ký</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#464642",
+                        "primary-fixed-dim": "#ffb4a1",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "surface-tint": "#904b39",
+                        "surface-container-highest": "#e9e1dc",
+                        "inverse-on-surface": "#f8efea",
+                        "inverse-primary": "#ffb4a1",
+                        "outline": "#86736e",
+                        "on-primary-container": "#ffcbbd",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "secondary": "#735c00",
+                        "tertiary-container": "#5e5d59",
+                        "surface-bright": "#fff8f5",
+                        "on-surface": "#1e1b18",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-variant": "#e9e1dc",
+                        "surface-container-high": "#efe6e2",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-container": "#f5ece7",
+                        "primary-container": "#8e4a38",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#d9c1bc",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary": "#713323",
+                        "on-surface-variant": "#53433f",
+                        "on-primary-fixed-variant": "#723424",
+                        "background": "#fff8f5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#fbf2ed",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "secondary-container": "#fed65b",
+                        "on-primary-fixed": "#3a0a01",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-secondary-container": "#745c00",
+                        "secondary-fixed": "#ffe088",
+                        "surface": "#fff8f5",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdbd2",
+                        "on-tertiary-container": "#d9d6d1",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#34302c",
+                        "surface-dim": "#e1d8d4",
+                        "on-background": "#1e1b18"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-padding-desktop": "120px",
+                        "section-padding-mobile": "64px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-sm": ["Playfair Display"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle
+    }
+.auth-split-image {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCWEYRfVna0SrdyH4XrP3nsUbc0GWGGI-CtVW6LES2Vxy-I60UATkUsfL3PrE-mG-G0fDLTE9U_3D2ZiK3aPGzMGQKxdD7sjCqmqnIUHZUWdO8mfzTmajhsYmM02-Qmqssk5KWXzypsn0kJVVr0kv6ZCTtR-PPbY91qxZf3nWAY7o92lj3Xa_osRtyzTWQtLKyUlCwo88ouZ1GWJBvJaWzM4LMwyZJIPurkrEzAxrXxq_l4KnJKMeich56w9cU7Pp5LLnURDcw565Y);
+    background-size: cover;
+    background-position: center
+    }
+.grain-overlay {
+    background-image: url(https://www.transparenttextures.com/patterns/p6.png);
+    opacity: 0.03
+    }</style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-outline-variant dark:border-outline bg-surface/80 shadow-sm transition-all duration-300">
+<nav class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<a class="font-headline-md text-headline-md font-medium tracking-tight text-primary" href="#">AuraSpa</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Our Story</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:opacity-80 transition-opacity" data-icon="language">language</span>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">Login</button>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-6 py-2 rounded-full hover:opacity-90 transition-opacity active:scale-95 duration-200">Register</button>
+</div>
+</nav>
+</header>
+<main class="min-h-screen flex flex-col md:flex-row pt-16">
+<!-- Left Side: Brand Imagery (Artistic Split) -->
+<section class="hidden md:flex relative w-1/2 min-h-full auth-split-image overflow-hidden" data-alt="A serene high-end spa interior with soft warm lighting and minimalist architectural lines. Natural materials like light wood and smooth stone are visible under a gentle golden hour sun glow. A single branch of cherry blossoms rests in a ceramic vase in the foreground, creating a feeling of peace and luxury. The image has a subtle film grain texture to enhance the tactile warmth of the AuraSpa brand.">
+<div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
+<div class="absolute inset-0 grain-overlay"></div>
+<div class="relative z-10 flex flex-col justify-end p-20 text-white">
+<h1 class="font-display-lg text-display-lg leading-tight mb-6">Đánh thức giác quan,<br/>Tìm lại bản ngã.</h1>
+<p class="font-body-lg text-body-lg max-w-md opacity-90">Hành trình trải nghiệm sự tĩnh lặng tuyệt đối tại AuraSpa, nơi mỗi liệu trình là một bản giao hưởng của sự chăm sóc tận tâm.</p>
+<div class="mt-12 flex items-center gap-4">
+<div class="w-12 h-[1px] bg-white opacity-50"></div>
+<span class="font-label-sm text-label-sm tracking-widest uppercase">Since 2024</span>
+</div>
+</div>
+</section>
+<!-- Right Side: Auth Form -->
+<section class="flex-1 flex items-center justify-center px-gutter py-section-padding-mobile md:py-0 bg-surface">
+<div class="w-full max-w-md space-y-10">
+<!-- Form Header -->
+<div class="text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2" id="auth-title">Chào mừng trở lại</h2>
+<p class="font-body-md text-body-md text-on-surface-variant" id="auth-subtitle">Vui lòng nhập thông tin để tiếp tục hành trình thư giãn của bạn.</p>
+</div>
+<!-- Tab Switcher -->
+<div class="flex border-b border-outline-variant">
+<button class="flex-1 py-4 font-label-md text-label-md border-b-2 border-primary text-primary transition-all" id="tab-login" onclick="switchAuth('login')">Đăng nhập</button>
+<button class="flex-1 py-4 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant hover:text-primary transition-all" id="tab-register" onclick="switchAuth('register')">Đăng ký</button>
+</div>
+<!-- Login Form -->
+<form class="space-y-6 transition-all duration-500 opacity-100" id="login-form">
+<div class="space-y-4">
+<div class="relative">
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-1 block">Email</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 py-2 px-0 transition-colors placeholder:text-outline/50" placeholder="example@auraspa.vn" type="email"/>
+</div>
+<div class="relative">
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-1 block">Mật khẩu</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 py-2 px-0 transition-colors placeholder:text-outline/50" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="rounded-sm border-outline text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ghi nhớ đăng nhập</span>
+</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">Quên mật khẩu?</a>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 font-label-md text-label-md rounded-full shadow-lg hover:opacity-90 transition-all active:scale-95" type="submit">
+                        Đăng nhập ngay
+                    </button>
+</form>
+<!-- Register Form (Hidden by default) -->
+<form class="hidden space-y-6 opacity-0 translate-y-4 transition-all duration-500" id="register-form">
+<div class="space-y-4">
+<div class="relative">
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-1 block">Họ và tên</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 py-2 px-0 transition-colors" placeholder="Nguyễn Văn A" type="text"/>
+</div>
+<div class="relative">
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-1 block">Email</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 py-2 px-0 transition-colors" placeholder="example@auraspa.vn" type="email"/>
+</div>
+<div class="relative">
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-1 block">Mật khẩu</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 py-2 px-0 transition-colors" placeholder="Tối thiểu 8 ký tự" type="password"/>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-center">
+                        Bằng cách đăng ký, bạn đồng ý với <a class="text-primary underline" href="#">Điều khoản dịch vụ</a> của chúng tôi.
+                    </p>
+<button class="w-full bg-primary text-on-primary py-4 font-label-md text-label-md rounded-full shadow-lg hover:opacity-90 transition-all active:scale-95" type="submit">
+                        Tạo tài khoản
+                    </button>
+</form>
+<!-- Social Auth -->
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="flex-1 h-[1px] bg-outline-variant"></div>
+<span class="font-label-sm text-label-sm text-outline">Hoặc tiếp tục với</span>
+<div class="flex-1 h-[1px] bg-outline-variant"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 border border-outline-variant rounded-full hover:bg-surface-container-low transition-colors">
+<svg class="w-5 h-5" viewbox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"></path></svg>
+<span class="font-label-md text-label-md">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3 border border-outline-variant rounded-full hover:bg-surface-container-low transition-colors">
+<svg class="w-5 h-5" fill="#1877F2" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+<span class="font-label-md text-label-md">Facebook</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-section-padding-desktop bg-surface-container-low transition-colors">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-gutter max-w-container-max mx-auto">
+<div class="md:col-span-4">
+<span class="font-headline-sm text-headline-sm font-medium text-primary mb-4 block">AuraSpa</span>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Tận hưởng không gian sang trọng và liệu trình đẳng cấp quốc tế tại trung tâm nghỉ dưỡng hàng đầu.</p>
+</div>
+<div class="md:col-span-2">
+<h4 class="font-label-md text-label-md text-primary mb-6">Trang chủ</h4>
+<ul class="space-y-3">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Dịch vụ</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Ưu đãi</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Thành viên</a></li>
+</ul>
+</div>
+<div class="md:col-span-2">
+<h4 class="font-label-md text-label-md text-primary mb-6">Hỗ trợ</h4>
+<ul class="space-y-3">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Trung tâm trợ giúp</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Chính sách đặt lịch</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Liên hệ</a></li>
+</ul>
+</div>
+<div class="md:col-span-4 flex flex-col md:items-end">
+<h4 class="font-label-md text-label-md text-primary mb-6">Kết nối</h4>
+<div class="flex gap-4 mb-8">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="facebook">social_leaderboard</span>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="instagram">photo_camera</span>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="youtube">play_circle</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 AuraSpa Wellness Retreat. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        function switchAuth(type) {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+            const title = document.getElementById('auth-title');
+            const subtitle = document.getElementById('auth-subtitle');
+
+            if (type === 'login') {
+                // Forms
+                loginForm.classList.remove('hidden');
+                setTimeout(() => {
+                    loginForm.classList.remove('opacity-0', 'translate-y-4');
+                    loginForm.classList.add('opacity-100');
+                }, 50);
+                registerForm.classList.add('hidden', 'opacity-0', 'translate-y-4');
+                
+                // Tabs
+                tabLogin.classList.add('border-primary', 'text-primary');
+                tabLogin.classList.remove('border-transparent', 'text-on-surface-variant');
+                tabRegister.classList.remove('border-primary', 'text-primary');
+                tabRegister.classList.add('border-transparent', 'text-on-surface-variant');
+
+                // Content
+                title.innerText = "Chào mừng trở lại";
+                subtitle.innerText = "Vui lòng nhập thông tin để tiếp tục hành trình thư giãn của bạn.";
+            } else {
+                // Forms
+                registerForm.classList.remove('hidden');
+                setTimeout(() => {
+                    registerForm.classList.remove('opacity-0', 'translate-y-4');
+                    registerForm.classList.add('opacity-100');
+                }, 50);
+                loginForm.classList.add('hidden', 'opacity-0', 'translate-y-4');
+
+                // Tabs
+                tabRegister.classList.add('border-primary', 'text-primary');
+                tabRegister.classList.remove('border-transparent', 'text-on-surface-variant');
+                tabLogin.classList.remove('border-primary', 'text-primary');
+                tabLogin.classList.add('border-transparent', 'text-on-surface-variant');
+
+                // Content
+                title.innerText = "Bắt đầu hành trình";
+                subtitle.innerText = "Tham gia cộng đồng AuraSpa để nhận được những đặc quyền riêng biệt.";
+            }
+        }
+
+        // Simple scroll effect for Header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'bg-surface/95');
+                header.classList.remove('py-4', 'bg-surface/80');
+            } else {
+                header.classList.remove('py-2', 'bg-surface/95');
+                header.classList.add('py-4', 'bg-surface/80');
+            }
+        });
+    </script>
+</body></html>

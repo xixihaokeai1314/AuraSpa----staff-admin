@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   useEffect(() => {
@@ -22,18 +23,19 @@ export default function Home() {
   }, []);
 
   return (
+    <>
     <main className="bg-background text-on-surface selection:bg-primary-fixed selection:text-primary">
 
       {/* Top Navigation Bar */}
       <nav className="fixed top-0 w-full z-50 glass-effect border-b border-outline-variant shadow-sm transition-all duration-300">
         <div className="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
           <div className="flex items-center gap-8">
-            <a className="font-headline-md text-headline-md font-medium tracking-tight text-primary" href="#">AuraSpa</a>
+            <a className="font-headline-md text-headline-md font-medium tracking-tight text-primary" href="/">AuraSpa</a>
             <div className="hidden md:flex gap-8 items-center">
-              <a className="font-label-md text-label-md text-primary font-semibold border-b-2 border-primary pb-1" href="#">Trang chủ</a>
-              <a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Dịch vụ</a>
+              <a className="font-label-md text-label-md text-primary font-semibold border-b-2 border-primary pb-1" href="/">Trang chủ</a>
+              <a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="/services">Dịch vụ</a>
               <a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Câu chuyện thương hiệu</a>
-              <a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Liên hệ</a>
+              <a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="/contact">Liên hệ</a>
             </div>
           </div>
           <div className="flex items-center gap-6">
@@ -75,8 +77,8 @@ export default function Home() {
               Trải nghiệm hành trình phục hồi thân-tâm-trí tại AuraSpa, nơi mỗi liệu trình được thiết kế riêng biệt để mang lại sự cân bằng hoàn hảo cho bạn.
             </p>
             <div className="flex gap-6">
-              <button className="bg-primary text-on-primary px-10 py-4 font-label-md text-label-md hover:opacity-90 transition-all shadow-md active:scale-95">Đặt Lịch Ngay</button>
-              <button className="border border-primary text-primary px-10 py-4 font-label-md text-label-md hover:bg-primary/5 transition-all active:scale-95">Xem Dịch Vụ</button>
+              <a href="/book" className="bg-primary text-on-primary px-10 py-4 font-label-md text-label-md hover:opacity-90 transition-all shadow-md active:scale-95 inline-flex items-center justify-center">Đặt Lịch Ngay</a>
+              <a href="/services" className="border border-primary text-primary px-10 py-4 font-label-md text-label-md hover:bg-primary/5 transition-all active:scale-95 inline-flex items-center justify-center">Xem Dịch Vụ</a>
             </div>
           </div>
         </div>
@@ -132,7 +134,7 @@ export default function Home() {
               <h2 className="font-headline-lg text-headline-lg text-primary mb-4">Dịch vụ nổi bật</h2>
               <p className="font-body-md text-body-md text-on-surface-variant">Khám phá các gói trị liệu được yêu thích nhất, được thiết kế để mang lại hiệu quả tối ưu cho sức khỏe và sắc đẹp của bạn.</p>
             </div>
-            <a className="font-label-md text-label-md text-primary flex items-center gap-2 group" href="#">
+            <a className="font-label-md text-label-md text-primary flex items-center gap-2 group" href="/services">
               Xem tất cả dịch vụ
               <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
             </a>
@@ -248,7 +250,7 @@ export default function Home() {
           <h2 className="font-headline-lg text-headline-lg text-on-primary mb-6">Sẵn sàng cho hành trình tái tạo?</h2>
           <p className="font-body-lg text-body-lg text-on-primary/90 mb-10">Hãy để chúng tôi chăm sóc bạn. Đặt lịch ngay hôm nay để nhận ưu đãi 20% cho lần trải nghiệm đầu tiên.</p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <button className="bg-surface text-primary px-12 py-5 font-label-md text-label-md hover:bg-surface-bright transition-all shadow-xl">ĐẶT LỊCH NGAY</button>
+            <a href="/book" className="bg-surface text-primary px-12 py-5 font-label-md text-label-md hover:bg-surface-bright transition-all shadow-xl inline-flex items-center justify-center">ĐẶT LỊCH NGAY</a>
             <button className="border-2 border-surface text-surface px-12 py-5 font-label-md text-label-md hover:bg-surface/10 transition-all">GỌI TƯ VẤN: 1900 8888</button>
           </div>
         </div>
@@ -319,5 +321,7 @@ export default function Home() {
       </div>
 
     </main>
+    <Footer />
+    </>
   );
 }

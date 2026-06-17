@@ -8,8 +8,8 @@ import {
   validatePassword,
   validatePhone,
   validateName,
-  getPasswordStrength,
-} from "@/lib/auth";
+} from "@/lib/validators";
+import { getPasswordStrength } from "@/lib/auth";
 
 interface Props {
   onSwitchTab: () => void;

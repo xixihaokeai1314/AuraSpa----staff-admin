@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .service-card-hover {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card-hover:hover {
+            transform: translateY(-8px);
+            background-color: #ffffff;
+            box-shadow: 0 20px 40px -15px rgba(113, 51, 35, 0.1);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff8f5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d9c1bc;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#ffcbbd",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "inverse-on-surface": "#f8efea",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-tertiary-container": "#d9d6d1",
+                        "primary-container": "#8e4a38",
+                        "on-secondary-container": "#745c00",
+                        "primary": "#713323",
+                        "secondary-container": "#fed65b",
+                        "error": "#ba1a1a",
+                        "tertiary": "#464642",
+                        "inverse-primary": "#ffb4a1",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-fixed": "#ffdbd2",
+                        "surface-dim": "#e1d8d4",
+                        "surface-container": "#f5ece7",
+                        "outline-variant": "#d9c1bc",
+                        "surface-container-highest": "#e9e1dc",
+                        "outline": "#86736e",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#5e5d59",
+                        "background": "#fff8f5",
+                        "on-secondary-fixed": "#241a00",
+                        "on-background": "#1e1b18",
+                        "on-surface-variant": "#53433f",
+                        "on-primary-fixed": "#3a0a01",
+                        "surface": "#fff8f5",
+                        "secondary": "#735c00",
+                        "inverse-surface": "#34302c",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-surface": "#1e1b18",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-tint": "#904b39",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb4a1",
+                        "surface-container-low": "#fbf2ed",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fff8f5",
+                        "surface-container-high": "#efe6e2",
+                        "on-primary-fixed-variant": "#723424",
+                        "surface-variant": "#e9e1dc",
+                        "secondary-fixed": "#ffe088"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-padding-mobile": "64px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "section-padding-desktop": "120px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "headline-sm": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/20">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:opacity-80 transition-opacity" id="menuToggle">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a class="font-headline-sm text-headline-sm tracking-widest text-primary uppercase" href="#">AuraSpa</a>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-semibold border-b-2 border-primary font-label-md text-label-md" href="#">Dịch Vụ</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Hành Trình Wellness</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Ưu Đãi</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Không Gian</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Câu Chuyện</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 font-label-md text-label-md tracking-wider hover:opacity-90 active:scale-95 transition-all">
+            ĐẶT LỊCH
+        </button>
+</div>
+</header>
+<!-- Side Navigation Drawer -->
+<div class="fixed inset-0 z-[60] bg-on-background/20 backdrop-blur-sm hidden" id="drawer">
+<div class="h-full w-80 bg-surface shadow-2xl p-6 flex flex-col gap-2 transform -translate-x-full transition-transform duration-300" id="drawerContent">
+<div class="flex justify-between items-center mb-8">
+<span class="font-headline-sm text-headline-sm text-primary tracking-widest uppercase">AuraSpa</span>
+<button class="text-on-surface-variant" id="closeDrawer"><span class="material-symbols-outlined">close</span></button>
+</div>
+<a class="flex items-center gap-4 bg-secondary-container text-on-secondary-container rounded-full px-6 py-3 transition-transform translate-x-1" href="#">
+<span class="material-symbols-outlined">spa</span>
+<span class="font-label-md text-label-md">Dịch Vụ</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-6 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">self_improvement</span>
+<span class="font-label-md text-label-md">Hành Trình Wellness</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-6 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">card_membership</span>
+<span class="font-label-md text-label-md">Thành Viên &amp; Ưu Đãi</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-6 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">castle</span>
+<span class="font-label-md text-label-md">Không Gian Aura</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-6 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-md text-label-md">Câu Chuyện Thương Hiệu</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-6 py-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-label-md text-label-md">Liên Hệ</span>
+</a>
+</div>
+</div>
+<main class="pt-24 pb-24">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-6 py-12 md:py-20 text-center">
+<span class="font-label-md text-label-md text-primary tracking-[0.3em] uppercase block mb-4">Thực Đơn Dịch Vụ</span>
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Nghệ Thuật Tận Hưởng</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto italic">
+            Hành trình đánh thức mọi giác quan qua những liệu pháp tinh túy nhất, được thiết kế riêng để mang lại sự cân bằng tuyệt đối cho tâm thân và trí.
+        </p>
+</section>
+<!-- Navigation Anchor Tabs -->
+<div class="sticky top-[73px] z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant/10 mb-16">
+<div class="max-w-container-max mx-auto px-6 overflow-x-auto">
+<div class="flex justify-center gap-8 md:gap-16 py-4 min-w-max">
+<a class="font-label-md text-label-md text-primary border-b border-primary pb-1" href="#massage">Massage</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1" href="#skincare">Chăm Sóc Da</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1" href="#body">Trị Liệu Toàn Thân</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors pb-1" href="#wellness">Gói Đặc Biệt</a>
+</div>
+</div>
+</div>
+<!-- Service Categories Grid Layout -->
+<div class="max-w-container-max mx-auto px-6 flex flex-col gap-24">
+<!-- Category: Massage -->
+<section class="scroll-mt-40" id="massage">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-6 mb-12">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary scale-125">spa</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Liệu Pháp Massage</h2>
+</div>
+<p class="hidden md:block font-body-md text-on-surface-variant italic">Giải tỏa căng thẳng và phục hồi năng lượng</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Service Item 1 -->
+<div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden service-card-hover border border-outline-variant/10">
+<div class="aspect-[4/3] overflow-hidden">
+<img alt="Swedish Massage" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAac7WTbymLJneytGE32jl_6mZs8HB5e7peYvWSICJEjugnfoFn9hqi-Z89SyFX_FtMebEnwXwECz37pkn2Cr_fHOO9Wb3F_ZF9MQ24TsMoETpYV18oDWZxG-ccf2fx3EOv5ICbFAp6UP8d96KPWSPos5eNYJerhenxI06RtryA8-a3xcbE6KnzmpPHQNOFnk7FohSvHeuNE_fm51bo7Rm1tfie71p9cGKfhoQ23o3QoGI76AartLuTxv3vSUEtedpr8RJ-yAAtmRE"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-2 min-h-[56px] flex items-center">Massage Thụy Điển Cổ Điển</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-6 line-clamp-3">Sự kết hợp giữa các động tác xoa bóp nhẹ nhàng và tinh dầu thiên nhiên giúp giảm căng thẳng cơ bắp.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-md text-primary">1,200,000đ / 60'</span>
+<a class="text-primary" href="#"><span class="material-symbols-outlined">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Service Item 2 -->
+<div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden service-card-hover border border-outline-variant/10">
+<div class="aspect-[4/3] overflow-hidden">
+<img alt="Hot Stone" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQREwFNHYxXIZc_Yn_u55Mx5xTO5tWoeWj1fytHY7vaVgQVak61Brh-3NckmNeClOZcbXox-os-a_P3-6z_biSz6_DmappUvGWMAl4yDvad51EeTBnVYTtb40VTGZMGuDLxKhiw2XJIbSu_QGi0pf9RncnPN1MwHKMDWBYkFELk51zkOPSh-cz1dV7GUpdLvgnvqnhI3HoaitDtjL26OblmlQaSRYoTVZH-zlJ_xHo-9XRxIVsXHPCavGYDhF1jgQGrETa1urSPkg"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-2 min-h-[56px] flex items-center">Massage Đá Nóng Núi Lửa</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-6 line-clamp-3">Năng lượng từ đá bazan nóng tác động sâu vào các huyệt đạo, giúp thải độc tố và xua tan mệt mỏi.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-md text-primary">1,500,000đ / 90'</span>
+<a class="text-primary" href="#"><span class="material-symbols-outlined">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Service Item 3 -->
+<div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden service-card-hover border border-outline-variant/10">
+<div class="aspect-[4/3] overflow-hidden bg-surface-container">
+<div class="w-full h-full flex items-center justify-center opacity-50"><span class="material-symbols-outlined text-4xl">eco</span></div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-2 min-h-[56px] flex items-center">Massage Tre Phương Đông</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-6 line-clamp-3">Sử dụng các thanh tre ấm để lăn và ấn sâu vào các mô cơ, giải phóng sự tắc nghẽn năng lượng.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-md text-primary">1,350,000đ / 75'</span>
+<a class="text-primary" href="#"><span class="material-symbols-outlined">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Service Item 4 -->
+<div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden service-card-hover border border-outline-variant/10">
+<div class="aspect-[4/3] overflow-hidden bg-surface-container">
+<div class="w-full h-full flex items-center justify-center opacity-50"><span class="material-symbols-outlined text-4xl">medical_services</span></div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-2 min-h-[56px] flex items-center">Trị Liệu Cổ Vai Gáy Chuyên Sâu</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-6 line-clamp-3">Giải pháp hoàn hảo cho nhân viên văn phòng, tập trung giải tỏa các điểm nút cơ vùng thượng lưng.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-md text-primary">950,000đ / 45'</span>
+<a class="text-primary" href="#"><span class="material-symbols-outlined">chevron_right</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Skin Care -->
+<section class="scroll-mt-40" id="skincare">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-6 mb-12">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary scale-125">face</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Chăm Sóc Da Mặt</h2>
+</div>
+<p class="hidden md:block font-body-md text-on-surface-variant italic">Công nghệ tiên tiến cho làn da rạng rỡ</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Service Item 1 -->
+<div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden service-card-hover border border-outline-variant/10">
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-2 min-h-[56px] flex items-center">Cấp Ẩm Radiance</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-6 line-clamp-3">Khôi phục độ ẩm tự nhiên của da bằng tinh chất HA và vitamin, mang lại làn da căng bóng.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-md text-primary">1,100,000đ / 60'</span>
+<a class="text-primary" href="#"><span class="material-symbols-outlined">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Service Item 2 -->
+<div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden service-card-hover border border-outline-variant/10">
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-2 min-h-[56px] flex items-center">Trẻ Hóa Tế Bào Gốc</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-6 line-clamp-3">Liệu pháp chống lão hóa tiên tiến sử dụng công nghệ ánh sáng sinh học và tế bào gốc thực vật.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-md text-primary">2,400,000đ / 90'</span>
+<a class="text-primary" href="#"><span class="material-symbols-outlined">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Service Item 3 -->
+<div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden service-card-hover border border-outline-variant/10">
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-2 min-h-[56px] flex items-center">Nâng Cơ V-Line 360</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-6 line-clamp-3">Sử dụng sóng RF kết hợp massage bấm huyệt Nhật Bản giúp thon gọn gương mặt tự nhiên.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-md text-primary">1,950,000đ / 75'</span>
+<a class="text-primary" href="#"><span class="material-symbols-outlined">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Service Item 4 -->
+<div class="flex flex-col bg-surface-container-low rounded-lg overflow-hidden service-card-hover border border-outline-variant/10">
+<div class="p-6 flex flex-col flex-1">
+<h3 class="font-headline-sm text-[20px] text-on-surface mb-2 min-h-[56px] flex items-center">Peel Da Thảo Mộc Aura</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-6 line-clamp-3">Thay da sinh học nhẹ nhàng với chiết xuất từ hoa cỏ tự nhiên, giải quyết vết thâm.</p>
+<div class="mt-auto pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="font-label-md text-primary">1,600,000đ / 60'</span>
+<a class="text-primary" href="#"><span class="material-symbols-outlined">chevron_right</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Body Treatments -->
+<section class="scroll-mt-40" id="body">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-6 mb-12">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary scale-125">body_system</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Trị Liệu Toàn Thân</h2>
+</div>
+<p class="hidden md:block font-body-md text-on-surface-variant italic">Nuôi dưỡng làn da từ thảo mộc thiên nhiên</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Body Item 1 -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between service-card-hover border border-outline-variant/10">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Muối Biển &amp; Cà Phê</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Tẩy tế bào chết và kích thích tái tạo da với cà phê Đắk Lắk nguyên chất.</p>
+<div class="mb-6">
+<span class="font-label-md text-label-md text-primary block">850,000đ / 45'</span>
+</div>
+</div>
+<a class="text-primary font-label-md text-label-md uppercase tracking-widest border-b border-primary/30 pb-1 self-start hover:border-primary transition-all" href="#">Xem chi tiết</a>
+</div>
+<!-- Body Item 2 -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between service-card-hover border border-outline-variant/10">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Ủ Bùn Khoáng Nóng</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Cung cấp khoáng chất thiết yếu, giúp thải độc và làm sáng mịn tông da toàn thân.</p>
+<div class="mb-6">
+<span class="font-label-md text-label-md text-primary block">1,050,000đ / 60'</span>
+</div>
+</div>
+<a class="text-primary font-label-md text-label-md uppercase tracking-widest border-b border-primary/30 pb-1 self-start hover:border-primary transition-all" href="#">Xem chi tiết</a>
+</div>
+<!-- Body Item 3 -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between service-card-hover border border-outline-variant/10">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Tắm Men Gạo &amp; Mật Ong</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Bí quyết làm đẹp truyền thống cho làn da mềm mại như lụa và trắng hồng tự nhiên.</p>
+<div class="mb-6">
+<span class="font-label-md text-label-md text-primary block">1,200,000đ / 60'</span>
+</div>
+</div>
+<a class="text-primary font-label-md text-label-md uppercase tracking-widest border-b border-primary/30 pb-1 self-start hover:border-primary transition-all" href="#">Xem chi tiết</a>
+</div>
+<!-- Body Item 4 -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between service-card-hover border border-outline-variant/10">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Detox Thảo Dược</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Làm ấm cơ thể, tăng cường hệ miễn dịch với túi thảo mộc gừng, sả và quế.</p>
+<div class="mb-6">
+<span class="font-label-md text-label-md text-primary block">1,350,000đ / 75'</span>
+</div>
+</div>
+<a class="text-primary font-label-md text-label-md uppercase tracking-widest border-b border-primary/30 pb-1 self-start hover:border-primary transition-all" href="#">Xem chi tiết</a>
+</div>
+<!-- Body Item 5 -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between service-card-hover border border-outline-variant/10">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Giảm Số Đo Chuyên Sâu</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Massage định hình kết hợp máy công nghệ cao để săn chắc vùng eo và đùi.</p>
+<div class="mb-6">
+<span class="font-label-md text-label-md text-primary block">1,800,000đ / 90'</span>
+</div>
+</div>
+<a class="text-primary font-label-md text-label-md uppercase tracking-widest border-b border-primary/30 pb-1 self-start hover:border-primary transition-all" href="#">Xem chi tiết</a>
+</div>
+<!-- Body Item 6 -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between service-card-hover border border-outline-variant/10">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Tinh Dầu Hoa Trà</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Cấp ẩm sâu cho da khô với dầu hoa trà cao cấp và kỹ thuật massage thư giãn.</p>
+<div class="mb-6">
+<span class="font-label-md text-label-md text-primary block">1,150,000đ / 60'</span>
+</div>
+</div>
+<a class="text-primary font-label-md text-label-md uppercase tracking-widest border-b border-primary/30 pb-1 self-start hover:border-primary transition-all" href="#">Xem chi tiết</a>
+</div>
+</div>
+</section>
+<!-- Category: Wellness Packages -->
+<section class="scroll-mt-40 bg-surface-container-highest/30 p-8 md:p-20 rounded-xl border border-outline-variant/20" id="wellness">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Gói Hành Trình Wellness</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Kết hợp nhiều liệu pháp để mang lại kết quả tối ưu và thư giãn sâu sắc.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Package Item 1 -->
+<div class="flex flex-col bg-surface border border-outline-variant/10 p-8 rounded-lg hover:shadow-xl transition-shadow duration-500">
+<div class="aspect-video overflow-hidden rounded-sm mb-8">
+<img alt="Zen Package" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm_drm21aKgARIN6cbluYOTLae7X7hdcc6zfRCBz4fbAwam5NbcMAGruyiwBUzRptvuHzW1jydIqiyO1ISxqpBUKOlyNYpQRGWXN_Qo-UPflyeE2x253FCaHL-xgHPDgbZmHq7C7G4T4wI2qv4tEilcqDDfvyxmWkXI7qaqUdiJioYHvvNLgRl7XlEyP7bTW7WlAXPfsdOJeFxCX97OCvZfhYGFizo1mEguppmk6ZNaq_HdZ4qWvpoAhYo5rcxhfwfcJwS5e9dpJ8"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-sm text-headline-sm text-primary">Gói "Tâm An" (Serenity)</h3>
+<span class="font-label-md text-label-md text-primary bg-primary-fixed px-4 py-1 rounded-full">3,200,000đ</span>
+</div>
+<ul class="font-body-md text-body-md text-on-surface-variant space-y-3 mb-8">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-primary">check_circle</span> Massage Đá Nóng 90'</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-primary">check_circle</span> Chăm sóc da mặt Radiance 60'</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-primary">check_circle</span> Quà tặng tinh dầu Aura 10ml</li>
+</ul>
+<div class="mt-auto flex gap-6">
+<button class="bg-primary text-on-primary px-8 py-3 font-label-md text-label-md uppercase tracking-wider hover:opacity-90 transition-opacity">Đặt ngay</button>
+<a class="inline-flex items-center text-on-surface-variant font-label-md text-label-md uppercase tracking-widest hover:text-primary transition-colors" href="#">Xem chi tiết</a>
+</div>
+</div>
+<!-- Package Item 2 -->
+<div class="flex flex-col bg-surface border border-outline-variant/10 p-8 rounded-lg hover:shadow-xl transition-shadow duration-500">
+<div class="aspect-video overflow-hidden rounded-sm mb-8">
+<img alt="Couple Package" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3ABZQOib4ahsVNToef3M5aX7h8HSD5iv-ZgCnqWTrvpkS6aTZMkdlB8-xs-Liu42swcMJIf2yTJ1-6pZUiX3faYcvl3ZGrHZIQGJbTCB34f9Bx3C6IeFWEO_NciiKa5f7AYR1OquqoWPK94usP9aIpYDamSbgHO86rPz2mF6P-NVn-KqrusGn0ND-mEEp6wdbJoYqud9yFjRY3y136ERm9wWZviyXZXqysa6TQCVFed_tO35FLQwdJ9t4xaUoXFfovQiorIraCag"/>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-sm text-headline-sm text-primary">Gói "Song Hành" (Couples)</h3>
+<span class="font-label-md text-label-md text-primary bg-primary-fixed px-4 py-1 rounded-full">5,800,000đ</span>
+</div>
+<ul class="font-body-md text-body-md text-on-surface-variant space-y-3 mb-8">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-primary">check_circle</span> Phòng VIP với bồn tắm hoa hồng</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-primary">check_circle</span> Massage Thụy Điển 75' (2 người)</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px] text-primary">check_circle</span> Tiệc trà nhẹ &amp; trái cây cao cấp</li>
+</ul>
+<div class="mt-auto flex gap-6">
+<button class="bg-primary text-on-primary px-8 py-3 font-label-md text-label-md uppercase tracking-wider hover:opacity-90 transition-opacity">Đặt ngay</button>
+<a class="inline-flex items-center text-on-surface-variant font-label-md text-label-md uppercase tracking-widest hover:text-primary transition-colors" href="#">Xem chi tiết</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant/10">
+<div class="max-w-container-max mx-auto px-8 py-16 md:py-24">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1 flex flex-col gap-6">
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-widest uppercase">AuraSpa</span>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Nơi thời gian ngừng lại, và hành trình chữa lành bắt đầu.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-6">Khám Phá</h4>
+<ul class="flex flex-col gap-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Dịch Vụ Massage</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Trị Liệu Da Mặt</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Chăm Sóc Toàn Thân</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Gói Wellness</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-6">Thông Tin</h4>
+<ul class="flex flex-col gap-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Về Chúng Tôi</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Tin Tức &amp; Sự Kiện</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Câu Hỏi Thường Gặp</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Chính Sách Bảo Mật</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-6">Liên Hệ</h4>
+<ul class="flex flex-col gap-4 text-on-surface-variant font-body-md">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[20px] mt-1">location_on</span>
+<span>123 Đường Tố Hữu, Quận 1, TP. Hồ Chí Minh</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">call</span>
+<span>+84 123 456 789</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+<span>contact@auraspa.vn</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center border-t border-outline-variant/10 pt-8 gap-4">
+<div class="text-on-surface-variant font-label-sm text-label-sm">
+                © 2024 AuraSpa Wellness. Bảo lưu mọi quyền.
+            </div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">Điều Khoản</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm uppercase tracking-widest" href="#">Sơ Đồ Trang</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Floating Action Button (Only on Mobile) -->
+<button class="md:hidden fixed bottom-6 right-6 bg-primary text-on-primary w-14 h-14 rounded-full shadow-xl flex items-center justify-center z-50 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">calendar_month</span>
+</button>
+<script>
+    // Drawer Logic
+    const menuToggle = document.getElementById('menuToggle');
+    const drawer = document.getElementById('drawer');
+    const drawerContent = document.getElementById('drawerContent');
+    const closeDrawer = document.getElementById('closeDrawer');
+
+    menuToggle.addEventListener('click', () => {
+        drawer.classList.remove('hidden');
+        setTimeout(() => {
+            drawerContent.classList.remove('-translate-x-full');
+        }, 10);
+    });
+
+    const hideDrawer = () => {
+        drawerContent.classList.add('-translate-x-full');
+        setTimeout(() => {
+            drawer.classList.add('hidden');
+        }, 300);
+    };
+
+    closeDrawer.addEventListener('click', hideDrawer);
+    drawer.addEventListener('click', (e) => {
+        if (e.target === drawer) hideDrawer();
+    });
+
+    // Smooth Scroll for Anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 150,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Update active state in nav
+            document.querySelectorAll('div.sticky a').forEach(a => {
+                a.classList.remove('text-primary', 'border-primary', 'border-b');
+                a.classList.add('text-on-surface-variant');
+            });
+            this.classList.add('text-primary', 'border-primary', 'border-b');
+            this.classList.remove('text-on-surface-variant');
+        });
+    });
+
+    // Simple Observer to update active state on scroll
+    const observerOptions = {
+        root: null,
+        rootMargin: '-150px 0px -70% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                const navLinks = document.querySelectorAll(`div.sticky a[href="#${id}"]`);
+                
+                document.querySelectorAll('div.sticky a').forEach(link => {
+                    link.classList.remove('text-primary', 'border-b', 'border-primary');
+                    link.classList.add('text-on-surface-variant');
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.add('text-primary', 'border-b', 'border-primary');
+                    link.classList.remove('text-on-surface-variant');
+                });
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section[id]').forEach((section) => {
+        observer.observe(section);
+    });
+</script>
+</body></html>

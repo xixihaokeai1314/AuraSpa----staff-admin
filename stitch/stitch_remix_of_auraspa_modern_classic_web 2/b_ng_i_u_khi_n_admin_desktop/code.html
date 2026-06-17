@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AuraSpa Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .chart-bar {
+            transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d9c1bc;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#574500",
+                      "primary": "#713323",
+                      "tertiary-container": "#5e5d59",
+                      "surface-dim": "#e1d8d4",
+                      "primary-fixed-dim": "#ffb4a1",
+                      "on-surface-variant": "#53433f",
+                      "on-error": "#ffffff",
+                      "on-surface": "#1e1b18",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#fbf2ed",
+                      "surface-tint": "#904b39",
+                      "inverse-on-surface": "#f8efea",
+                      "secondary-fixed": "#ffe088",
+                      "surface-variant": "#e9e1dc",
+                      "on-tertiary-fixed-variant": "#474743",
+                      "background": "#fff8f5",
+                      "secondary-container": "#fed65b",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#d9c1bc",
+                      "on-secondary-container": "#745c00",
+                      "surface-bright": "#fff8f5",
+                      "secondary": "#735c00",
+                      "tertiary-fixed": "#e5e2dd",
+                      "surface-container": "#f5ece7",
+                      "surface": "#fff8f5",
+                      "tertiary": "#464642",
+                      "on-secondary-fixed": "#241a00",
+                      "tertiary-fixed-dim": "#c9c6c2",
+                      "primary-container": "#8e4a38",
+                      "on-tertiary-fixed": "#1c1c19",
+                      "on-tertiary-container": "#d9d6d1",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e9e1dc",
+                      "outline": "#86736e",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#3a0a01",
+                      "on-background": "#1e1b18",
+                      "secondary-fixed-dim": "#e9c349",
+                      "primary-fixed": "#ffdbd2",
+                      "on-primary-container": "#ffcbbd",
+                      "inverse-surface": "#34302c",
+                      "inverse-primary": "#ffb4a1",
+                      "on-primary-fixed-variant": "#723424",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#efe6e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "section-padding-desktop": "120px",
+                      "unit": "8px",
+                      "section-padding-mobile": "64px",
+                      "gutter": "24px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Playfair Display"],
+                      "display-lg": ["Playfair Display"],
+                      "body-lg": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "body-md": ["Manrope"],
+                      "label-md": ["Manrope"],
+                      "headline-md": ["Playfair Display"],
+                      "headline-sm": ["Playfair Display"],
+                      "headline-lg-mobile": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                      "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                      "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<div class="flex min-h-screen">
+<!-- Side Navigation -->
+<aside class="w-64 bg-surface-container-low border-r border-outline-variant/30 hidden md:flex flex-col sticky top-0 h-screen">
+<div class="p-8">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">AuraSpa</h1>
+<p class="font-label-sm text-label-sm text-outline mt-1 tracking-widest uppercase">Quản trị viên</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/5 text-primary rounded-lg font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Tổng quan
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-lg font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+                    Lịch hẹn
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-lg font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+                    Khách hàng
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-lg font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined">spa</span>
+                    Dịch vụ
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-lg font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Nhân viên
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant/50 rounded-lg font-label-md transition-all duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+                    Tài chính
+                </a>
+</nav>
+<div class="p-4 border-t border-outline-variant/20">
+<button class="flex items-center gap-3 w-full px-4 py-3 text-on-surface-variant hover:text-error transition-colors font-label-md">
+<span class="material-symbols-outlined">logout</span>
+                    Đăng xuất
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Top App Bar -->
+<header class="h-20 bg-surface/80 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between px-8 border-b border-outline-variant/30">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Chào buổi sáng, Admin</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-variant/30 border-none rounded-full text-sm focus:ring-1 focus:ring-primary w-64" placeholder="Tìm kiếm giao dịch..." type="text"/>
+</div>
+<button class="relative p-2 text-on-surface-variant hover:bg-surface-variant/50 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant/30">
+<div class="text-right hidden sm:block">
+<p class="font-label-md text-on-surface">Lê Minh Anh</p>
+<p class="font-label-sm text-outline">Quản lý cơ sở</p>
+</div>
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="Professional portrait of a spa manager in a bright, modern office setting. The woman is smiling warmly, conveying trust and hospitality. Soft natural light illuminates her face against a backdrop of minimalist wooden panels and green indoor plants. High-end lifestyle photography style with soft focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRPpzlZbzqw9n2o761mLvi8JeoKc470BbhC53mx_tpGXnrx53ku-koVfNrM3-jFkVObT-K-CL4Ex_yj8M26-RkZ_Bx7Q9w9mOUjGtw7ZCU6OsJX2euYLz-4NGQLlZ-eLo1i5U3vDJHbP7TVMozBjX3fhX0rVuuPegTuGzjHrzM5vFrF7u4VxpWpWNRxAz8OdmhTZ2fiq-3-Aob3BoD0zCqeXM9NE9dTE-bbGF41ME7RJazMNfJbmK8T8qltT2hFVVG2D48fzWIbe4"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 space-y-8 max-w-container-max mx-auto w-full">
+<!-- Overview Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Revenue Card -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:shadow-lg transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<span class="text-secondary font-label-md flex items-center gap-1">
+                                +12.5% <span class="material-symbols-outlined text-[16px]">trending_up</span>
+</span>
+</div>
+<p class="font-label-md text-outline mb-1">Doanh thu tháng này</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">425.000.000đ</h3>
+</div>
+<!-- Appointments Card -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:shadow-lg transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-secondary/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined">event_available</span>
+</div>
+<span class="text-secondary font-label-md flex items-center gap-1">
+                                +8.2% <span class="material-symbols-outlined text-[16px]">trending_up</span>
+</span>
+</div>
+<p class="font-label-md text-outline mb-1">Tổng lịch hẹn</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">1,284</h3>
+</div>
+<!-- Staff Status Card -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:shadow-lg transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-tertiary-container/10 rounded-lg text-tertiary">
+<span class="material-symbols-outlined">person_pin</span>
+</div>
+<span class="text-outline font-label-md">Đang làm việc</span>
+</div>
+<p class="font-label-md text-outline mb-1">Nhân viên hiện diện</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">24/30</h3>
+</div>
+<!-- Satisfaction Card -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:shadow-lg transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-error/10 rounded-lg text-error">
+<span class="material-symbols-outlined">star</span>
+</div>
+<span class="text-secondary font-label-md">Xuất sắc</span>
+</div>
+<p class="font-label-md text-outline mb-1">Đánh giá trung bình</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">4.9 / 5.0</h3>
+</div>
+</div>
+<!-- Main Visualization Section: Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Performance Chart -->
+<div class="lg:col-span-2 bg-surface-container-low p-8 rounded-xl border border-outline-variant/20">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Hiệu suất hàng tuần</h3>
+<p class="font-body-md text-outline">So sánh doanh thu giữa các dịch vụ chính</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs font-label-md bg-primary text-white rounded-full">Tuần này</button>
+<button class="px-3 py-1 text-xs font-label-md bg-surface-variant text-on-surface-variant rounded-full">Tuần trước</button>
+</div>
+</div>
+<!-- Simplified Bar Chart -->
+<div class="h-64 flex items-end justify-between gap-4 px-4">
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="chart-bar w-full bg-primary rounded-t-lg" style="height: 65%;"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">78tr</div>
+</div>
+<span class="font-label-sm text-outline">T.Hai</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="chart-bar w-full bg-primary rounded-t-lg" style="height: 45%;"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">54tr</div>
+</div>
+<span class="font-label-sm text-outline">T.Ba</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="chart-bar w-full bg-primary rounded-t-lg" style="height: 85%;"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">102tr</div>
+</div>
+<span class="font-label-sm text-outline">T.Tư</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="chart-bar w-full bg-primary rounded-t-lg" style="height: 70%;"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">84tr</div>
+</div>
+<span class="font-label-sm text-outline">T.Năm</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-primary/20 rounded-t-lg relative group">
+<div class="chart-bar w-full bg-primary rounded-t-lg" style="height: 95%;"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">115tr</div>
+</div>
+<span class="font-label-sm text-outline">T.Sáu</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-secondary/30 rounded-t-lg relative group">
+<div class="chart-bar w-full bg-secondary rounded-t-lg" style="height: 100%;"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">140tr</div>
+</div>
+<span class="font-label-sm text-outline font-bold text-secondary">T.Bảy</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full bg-secondary/30 rounded-t-lg relative group">
+<div class="chart-bar w-full bg-secondary rounded-t-lg" style="height: 90%;"></div>
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">128tr</div>
+</div>
+<span class="font-label-sm text-outline font-bold text-secondary">CN</span>
+</div>
+</div>
+</div>
+<!-- Upcoming Appointments List -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Lịch hẹn sắp tới</h3>
+<a class="text-primary font-label-sm hover:underline" href="#">Xem tất cả</a>
+</div>
+<div class="space-y-4 flex-1 overflow-y-auto max-h-80 pr-2">
+<!-- Appointment Item -->
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface-variant/30 transition-colors border border-transparent hover:border-outline-variant/20">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a young woman with a serene expression, soft lighting, and warm earthy tones. She is set against a clean, minimalist background, embodying the luxury spa aesthetic. High-quality editorial photography with natural skin texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLnuM6ZJerJKt_7D0KiLMrYzNQIW5qKz3Qz2YdB4-qDK8heBezB-E-UZsxw1puuzGyQKlNmCcwOKytXbHX0rXSbPLJdWik82LAL81NX-jvD9_iFfFpknJaqnvUHd1sdKlupjN39OHM-qmHUVlfoQl2Y73p6Niv6SzHltxgAMxLoGJt2MPOa7H2E46T6pcu4HODUeOpBlBzEYbWURuKnNXe0zz7Nw98GzKS-BZXSMs2oRl5uxCtAJzLSZghS1HYQ21CMgx3uY-H8d8"/>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-on-surface truncate">Nguyễn Thị Hồng</p>
+<p class="font-label-sm text-outline">Massage Thụy Điển</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-primary">14:30</p>
+<p class="font-label-sm text-outline">Hôm nay</p>
+</div>
+</div>
+<!-- Appointment Item -->
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface-variant/30 transition-colors border border-transparent hover:border-outline-variant/20">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Close up portrait of a man in a spa environment, relaxed lighting with hints of warm terracotta and soft gold accents in the background. Calm and professional mood, high-end photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd3f-SXXTi7ampwISRJ9S5QJwoYg-g61R8GDiJNjd1Fo4abwpFmEUBYGzD7Zi6CyA51etIHRJgdirjJ1D3W6uWDEh5vDemfktxyA2hewGTovHGinQRXGSFuY1R0tVl0oJrKBC-cwkE4URXWf2aSlIffKFQ2ANeIDLrfSYQb1eImY6hiGF9Zgf-oHddYaC9vfoprKLMz1oFaGCZZxOF_5nGSxOb_5nSn3ompcwHNFKbaZ9amJJaxCrgy6pt6Ytgps4n6QcqraZ1C3Q"/>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-on-surface truncate">Trần Hoàng Nam</p>
+<p class="font-label-sm text-outline">Chăm sóc da mặt</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-primary">15:15</p>
+<p class="font-label-sm text-outline">Hôm nay</p>
+</div>
+</div>
+<!-- Appointment Item -->
+<div class="flex items-center gap-4 p-3 rounded-lg hover:bg-surface-variant/30 transition-colors border border-transparent hover:border-outline-variant/20">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A portrait of a cheerful woman at a luxury spa, warm natural lighting, minimalist composition with soft focus background. Professional, high-quality lighting with a palette of beige and terracotta." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdxpw6jhryGg1MgC5JGL05tz88sJFraf3GfIu4D3BMexKdCDBkMleSI-8HwT1wN9r5Q-DI8pI5ngc-RHkcdv9sJX1Payw4vuGRnTjeVoCtOpBQYTw3kwRNmIsH5wZyVdjcVheGYi5njTN-0B2INt29PSQvAkUsIbpYF42RJr9UsG3elfRyJgyv0odtVn7zTFQ-WPs4SPJy5X2kqeIv3bTC4yQfUkbiUuNs43nMx4cGxID9vf9sq56KhSpdRXqmqZj9fS7Oa84X3XU"/>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-on-surface truncate">Phạm Minh Trang</p>
+<p class="font-label-sm text-outline">Trị liệu tinh dầu</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-primary">16:00</p>
+<p class="font-label-sm text-outline">Hôm nay</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Data Table: Recent Transactions -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/20 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Giao dịch gần đây</h3>
+<div class="flex gap-4 w-full sm:w-auto">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg font-label-sm hover:bg-surface-variant/30 transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+                                Bộ lọc
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-label-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                                Xuất file
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-variant/20">
+<tr>
+<th class="px-6 py-4 font-label-md text-outline">Mã giao dịch</th>
+<th class="px-6 py-4 font-label-md text-outline">Khách hàng</th>
+<th class="px-6 py-4 font-label-md text-outline">Dịch vụ</th>
+<th class="px-6 py-4 font-label-md text-outline">Ngày</th>
+<th class="px-6 py-4 font-label-md text-outline text-right">Số tiền</th>
+<th class="px-6 py-4 font-label-md text-outline text-center">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="px-6 py-4 font-label-md text-on-surface">#AS-92834</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-xs">BT</div>
+<span class="font-label-md text-on-surface">Bùi Tấn</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">Thải độc toàn thân</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">24/05/2024</td>
+<td class="px-6 py-4 font-label-md text-on-surface text-right">2.500.000đ</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-label-md">Thành công</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="px-6 py-4 font-label-md text-on-surface">#AS-92835</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs">ML</div>
+<span class="font-label-md text-on-surface">Mai Linh</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">Combo Beauty Sleep</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">24/05/2024</td>
+<td class="px-6 py-4 font-label-md text-on-surface text-right">4.800.000đ</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-label-md">Đang xử lý</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/10 transition-colors">
+<td class="px-6 py-4 font-label-md text-on-surface">#AS-92836</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container font-bold text-xs">KH</div>
+<span class="font-label-md text-on-surface">Khánh Huyền</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">Nặn mụn y khoa</td>
+<td class="px-6 py-4 font-body-md text-on-surface-variant">23/05/2024</td>
+<td class="px-6 py-4 font-label-md text-on-surface text-right">850.000đ</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-label-md">Thành công</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Footer Integration -->
+<footer class="mt-auto bg-surface-container py-8">
+<div class="max-w-container-max mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm text-outline">© 2024 AuraSpa. Hệ thống quản trị trung tâm.</p>
+<div class="flex gap-6">
+<a class="font-label-sm text-outline hover:text-primary transition-colors" href="#">Điều khoản</a>
+<a class="font-label-sm text-outline hover:text-primary transition-colors" href="#">Bảo mật</a>
+<a class="font-label-sm text-outline hover:text-primary transition-colors" href="#">Hỗ trợ kỹ thuật</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Animate chart bars on load
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach(bar => {
+                const finalHeight = bar.style.height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.height = finalHeight;
+                }, 100);
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        if(searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('ring-1', 'ring-primary/50');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('ring-1', 'ring-primary/50');
+            });
+        }
+    </script>
+</body></html>

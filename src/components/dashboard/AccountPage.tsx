@@ -47,7 +47,7 @@ export default function AccountPage() {
   };
 
   const roleLabel: Record<string, string> = {
-    customer: "Khách hàng", staff: "Nhân viên", manager: "Quản lý chi nhánh", owner: "Chủ sở hữu",
+    customer: "Khách hàng", staff: "Nhân viên", manager: "Quản lý chi nhánh", admin: "Chủ sở hữu",
   };
 
   const initials = user?.name.split(" ").map((w) => w[0]).slice(-2).join("").toUpperCase() ?? "?";

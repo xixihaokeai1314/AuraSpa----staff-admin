@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AuraSpa Admin Portal</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#474743",
+                    "inverse-primary": "#ffb4a1",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#723424",
+                    "on-background": "#1e1b18",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#34302c",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-primary": "#ffffff",
+                    "outline": "#86736e",
+                    "surface-container-low": "#fbf2ed",
+                    "surface": "#fff8f5",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#fff8f5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#3a0a01",
+                    "inverse-on-surface": "#f8efea",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#f5ece7",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#ffdbd2",
+                    "surface-container-highest": "#e9e1dc",
+                    "secondary-container": "#fed65b",
+                    "on-surface-variant": "#53433f",
+                    "primary-container": "#8e4a38",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "surface-dim": "#e1d8d4",
+                    "outline-variant": "#d9c1bc",
+                    "on-surface": "#1e1b18",
+                    "on-secondary-container": "#745c00",
+                    "secondary-fixed": "#ffe088",
+                    "tertiary": "#464642",
+                    "primary-fixed-dim": "#ffb4a1",
+                    "background": "#fff8f5",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary": "#735c00",
+                    "primary": "#713323",
+                    "on-primary-container": "#ffcbbd",
+                    "tertiary-container": "#5e5d59",
+                    "surface-tint": "#904b39",
+                    "surface-container-high": "#efe6e2",
+                    "on-tertiary-container": "#d9d6d1",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "surface-variant": "#e9e1dc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "section-padding-mobile": "64px",
+                    "section-padding-desktop": "120px",
+                    "unit": "8px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Manrope"],
+                    "headline-lg": ["Playfair Display"],
+                    "label-md": ["Manrope"],
+                    "headline-md": ["Playfair Display"],
+                    "body-md": ["Manrope"],
+                    "display-lg": ["Playfair Display"],
+                    "body-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: #fff8f5;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff8f5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d9c1bc;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- NavigationDrawer -->
+<aside class="hidden md:flex flex-col h-full w-80 bg-surface-container dark:bg-surface-container-low border-r border-outline-variant/20 rounded-r-full py-6">
+<div class="px-8 mb-10 flex flex-col items-start">
+<div class="flex items-center gap-3 mb-4">
+<img alt="Admin profile photo" class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot of a mature administrative manager in a serene, high-end spa office. The portrait is captured in soft, natural morning light, emphasizing a warm and welcoming professional demeanor. The color palette features soft terracottas and creamy whites, consistent with the AuraSpa luxury wellness brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_lHxo3SJeMgDLItqRhnxZI8kevIFiQ2DdKHkRMmZHmozbOtRHQatLlymAy_zNjmB96p0K3TPnb0obvP4VG3NsO7t5whUN2cBScfNj7dczb2YvpFisQpwmnj0wqv2npWDeDCrDgF93ItfenV4Hqf5qqzxJ-SoWstLmmr58sZ6l9XKysDhw-2yTEQ_Fl_uETVk7NyoMIjSeDq4Y_MapeRZndSGHagAYcqhPdIIwCOicMk4s1qPTpWFWgqiflJ5spuCE3rEnOfsOBRU"/>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Management Portal</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">AuraSpa Admin</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard (Active) -->
+<a class="bg-primary-container text-on-primary-container rounded-full mx-2 my-1 flex items-center px-6 py-3 transition-all scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3 active-nav-icon" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Appointments -->
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 my-1 flex items-center px-6 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Appointments</span>
+</a>
+<!-- Inventory -->
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 my-1 flex items-center px-6 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<!-- Staff -->
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 my-1 flex items-center px-6 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<!-- Settings -->
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-full mx-2 my-1 flex items-center px-6 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-8 mt-auto">
+<button class="flex items-center text-on-surface-variant font-label-md hover:text-primary transition-colors">
+<span class="material-symbols-outlined mr-2" data-icon="logout">logout</span>
+                    Đăng xuất
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full md:relative z-50 backdrop-blur-md bg-surface/80 border-b border-outline-variant/30 h-16 flex justify-between items-center px-gutter max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary md:hidden" data-icon="menu">menu</span>
+<h1 class="font-headline-md text-headline-md text-primary">AuraSpa</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-8 font-label-md">
+<span class="text-primary font-bold">Dashboard</span>
+<span class="text-on-surface-variant hover:text-primary transition-colors">Thống kê</span>
+<span class="text-on-surface-variant hover:text-primary transition-colors">Hỗ trợ</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx1qe3MMEDJ9Pebg24qpJaNP_ZHxm8KoADby9Wek05Tbt6haqemLrPEhiW02PuB87faqkwYA1BbK9HOntuW5OjkOnc1PLRXSRVWFn6xzsai6S5M0QCGfoIYWQPW6G-TCSr21hn0MjV7kHWaDaHUja2vqk6ERm9UioxupNHqHpMpQYio5XXv8tQDPcIgEsMgJzPXC9iRJihak8pDVwI6thCupxXiQe3r1Uh3HuEyqpgC8TdK7Xj-kWy-ZK6ielQDGtaavWNVnGUmqI"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 overflow-y-auto pt-16 md:pt-0 pb-24 md:pb-8 px-gutter">
+<div class="max-w-container-max mx-auto py-8">
+<!-- Welcome Section -->
+<section class="mb-12">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Xin chào, Admin</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Dưới đây là thông số vận hành tổng quan của AuraSpa trong hôm nay.</p>
+</section>
+<!-- Bento Grid Dashboard -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Revenue Stat Card -->
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between border border-outline-variant/30 hover:shadow-[0px_10px_30px_rgba(45,41,38,0.05)] transition-all">
+<div>
+<div class="flex justify-between items-center mb-6">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Tổng doanh thu</span>
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+</div>
+<div class="flex items-baseline gap-4">
+<span class="font-display-lg text-display-lg text-primary">128.5M</span>
+<span class="font-label-md text-label-md text-green-600 bg-green-100 px-2 py-1 rounded-full">+12% vs tuần trước</span>
+</div>
+</div>
+<div class="mt-8 h-32 w-full flex items-end gap-1">
+<!-- Abstract Chart Representation -->
+<div class="bg-primary/20 w-full h-[40%] rounded-t-sm"></div>
+<div class="bg-primary/20 w-full h-[60%] rounded-t-sm"></div>
+<div class="bg-primary/20 w-full h-[55%] rounded-t-sm"></div>
+<div class="bg-primary/20 w-full h-[75%] rounded-t-sm"></div>
+<div class="bg-primary/20 w-full h-[65%] rounded-t-sm"></div>
+<div class="bg-primary/40 w-full h-[90%] rounded-t-sm"></div>
+<div class="bg-primary w-full h-[100%] rounded-t-sm"></div>
+</div>
+</div>
+<!-- Quick Actions / Appointments -->
+<div class="md:col-span-4 bg-primary text-on-primary-container rounded-xl p-8 flex flex-col justify-between hover:shadow-[0px_10px_30px_rgba(45,41,38,0.15)] transition-all">
+<div class="mb-6">
+<span class="font-label-md text-label-md uppercase tracking-widest text-on-primary-container/80">Đặt lịch mới</span>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-4xl" data-icon="pending_actions">pending_actions</span>
+<span class="font-headline-lg text-headline-lg text-white">24</span>
+</div>
+</div>
+<button class="bg-white/10 hover:bg-white/20 text-white border border-white/20 py-4 px-6 rounded-full font-label-md transition-all flex justify-between items-center group">
+                                Xem tất cả lịch hẹn
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Staff Performance -->
+<div class="md:col-span-4 bg-surface-container rounded-xl p-8 border border-outline-variant/30">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Hiệu suất nhân viên</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center text-primary font-bold">HL</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Hương Ly</p>
+<p class="text-xs text-on-surface-variant">Kỹ thuật viên chính</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-primary">98%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-secondary-fixed rounded-full flex items-center justify-center text-secondary font-bold">MT</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Minh Tú</p>
+<p class="text-xs text-on-surface-variant">Chuyên gia massage</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-primary">92%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-tertiary-fixed rounded-full flex items-center justify-center text-tertiary font-bold">AN</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">An Nhiên</p>
+<p class="text-xs text-on-surface-variant">Tư vấn viên</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-primary">85%</span>
+</div>
+</div>
+</div>
+<!-- User Management / Notifications -->
+<div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Important Notifications -->
+<div class="bg-surface-container-highest/50 rounded-xl p-8 border border-outline-variant/30">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="notification_important">notification_important</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Thông báo</h3>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-white/50 rounded-lg border-l-4 border-error">
+<p class="font-label-md text-label-md text-on-surface">Kho hàng: Tinh dầu Sả Chanh sắp hết.</p>
+<p class="text-xs text-on-surface-variant">Cần nhập thêm 20 chai trong tuần này.</p>
+</div>
+<div class="p-4 bg-white/50 rounded-lg border-l-4 border-secondary">
+<p class="font-label-md text-label-md text-on-surface">Bảo trì phòng Xông hơi 02.</p>
+<p class="text-xs text-on-surface-variant">Dự kiến hoàn thành lúc 18:00 hôm nay.</p>
+</div>
+</div>
+</div>
+<!-- System Status -->
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/30 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-4">Hệ thống</h3>
+<div class="flex items-center gap-4 mb-2">
+<span class="w-3 h-3 bg-green-500 rounded-full"></span>
+<span class="font-label-md text-label-md">Server Trạng thái: Ổn định</span>
+</div>
+<p class="text-sm text-on-surface-variant">Lần sao lưu cuối: 02:00 AM</p>
+</div>
+<div class="mt-6 flex gap-3">
+<button class="flex-1 bg-surface-container-high py-3 rounded-full font-label-md text-on-surface-variant hover:bg-outline-variant/20 transition-all">
+                                        Cài đặt
+                                    </button>
+<button class="flex-1 bg-primary py-3 rounded-full font-label-md text-white hover:opacity-90 transition-all">
+                                        Báo cáo
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- User Table Section -->
+<section class="mt-16">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface">Quản lý người dùng mới</h2>
+<button class="text-primary font-label-md flex items-center gap-2 hover:underline">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+                                Thêm thành viên
+                            </button>
+</div>
+<div class="bg-white rounded-2xl overflow-hidden border border-outline-variant/20">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container">
+<tr>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Khách hàng</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Dịch vụ ưu thích</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Trạng thái</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Hành động</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-xs text-primary">TH</div>
+<div>
+<p class="font-label-md text-label-md">Trần Hoài</p>
+<p class="text-xs text-on-surface-variant">hoaitran@gmail.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md">Massage Thụy Điển</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Thành viên Kim cương</span>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-xs text-secondary">NM</div>
+<div>
+<p class="font-label-md text-label-md">Nguyễn Minh</p>
+<p class="text-xs text-on-surface-variant">minh.ng@aura.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-body-md text-body-md">Liệu trình Đá nóng</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-primary-fixed text-primary rounded-full text-xs font-semibold">Thành viên Mới</span>
+</td>
+<td class="px-6 py-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_vert">more_vert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface dark:bg-inverse-surface flex justify-around items-center py-3 px-4 rounded-t-full shadow-[0px_-10px_30px_rgba(45,41,38,0.05)]">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-semibold scale-95 transition-all" href="#">
+<span class="material-symbols-outlined active-nav-icon" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim hover:scale-105 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="spa">spa</span>
+<span class="font-label-sm text-label-sm">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim hover:scale-105 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-label-sm text-label-sm">Blog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-tertiary-fixed-variant dark:text-tertiary-fixed-dim hover:scale-105 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+</nav>
+<!-- Floating Action Button Contextual (Suppress on Detail pages, but keep on Dashboard) -->
+<button class="fixed bottom-24 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40 md:bottom-8">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<script>
+        // Simple micro-interactions for the stats cards
+        document.querySelectorAll('.grid > div').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

@@ -25,7 +25,7 @@ export default function ManagerComplaints() {
   const handleEscalate = () => {
     setComplaints((p) => p.map((c) => c.id === selected ? { ...c, status: "escalated" as ComplaintStatus } : c));
     setSelected(null);
-    showToast("✓ Đã chuyển lên Owner để xử lý");
+    showToast("✓ Đã chuyển lên quản trị để xử lý");
   };
 
   const handleSetInProgress = (id: string) => {
@@ -65,9 +65,8 @@ export default function ManagerComplaints() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* List */}
-        <div className="space-y-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="md:col-span-1 space-y-3">
           {filtered.map((c) => (
             <div
               key={c.id}
@@ -103,7 +102,7 @@ export default function ManagerComplaints() {
         </div>
 
         {/* Detail */}
-        <div>
+        <div className="md:col-span-2">
           {selectedItem ? (
             <div className="bg-white rounded-2xl border border-outline-variant/20 p-6 space-y-4 sticky top-6">
               <div>
@@ -156,7 +155,7 @@ export default function ManagerComplaints() {
                       onClick={handleEscalate}
                       className="flex-1 border-2 border-error text-error py-3 rounded-full font-label-md text-label-md hover:bg-error-container/20"
                     >
-                      Leo thang lên Owner
+                      Leo thang lên quản trị
                     </button>
                   </div>
                 </div>

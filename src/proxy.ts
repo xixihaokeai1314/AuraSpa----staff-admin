@@ -5,7 +5,7 @@ const PROTECTED: Record<string, string[]> = {
   "/customer": ["customer"],
   "/staff": ["staff"],
   "/manager": ["manager"],
-  "/admin": ["owner"],
+  "/admin": ["admin"],
 };
 
 export function proxy(request: NextRequest) {
@@ -33,7 +33,7 @@ export function proxy(request: NextRequest) {
       customer: "/customer",
       staff: "/staff",
       manager: "/manager",
-      owner: "/admin",
+      admin: "/admin",
     };
     return NextResponse.redirect(new URL(redirects[role] ?? "/", request.url));
   }

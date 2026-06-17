@@ -20,7 +20,7 @@ export default function AdminRevenue() {
     <div className="p-6 max-w-container-max mx-auto space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-headline-md text-headline-md text-primary">Bảng điều khiển doanh thu (UC-36)</h1>
+          <h1 className="font-headline-md text-headline-md text-primary">Bảng điều khiển doanh thu</h1>
           <p className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Dữ liệu toàn hệ thống · H1/2024</p>
         </div>
         <div className="flex items-center gap-3">

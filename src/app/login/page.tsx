@@ -24,7 +24,7 @@ function LoginPageInner() {
         customer: "/customer",
         staff: "/staff",
         manager: "/manager",
-        owner: "/admin",
+        admin: "/admin",
       };
       router.replace(from ?? redirects[user.role] ?? "/");
     }

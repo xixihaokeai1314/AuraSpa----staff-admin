@@ -1,7 +1,7 @@
 // Auth utilities — simulates JWT-based auth via cookies (no real backend)
 // In production, replace with real API calls
 
-export type UserRole = "customer" | "staff" | "manager" | "owner";
+export type UserRole = "customer" | "staff" | "manager" | "admin";
 
 export interface AuthUser {
   id: string;
@@ -45,9 +45,9 @@ export const MOCK_USERS: (AuthUser & { password: string })[] = [
   {
     id: "o001",
     name: "Admin AuraSpa",
-    email: "owner@auraspa.vn",
+    email: "admin@auraspa.vn",
     password: "Owner123",
-    role: "owner",
+    role: "admin",
     avatar: "",
   },
 ];
@@ -57,7 +57,7 @@ export const ROLE_REDIRECTS: Record<UserRole, string> = {
   customer: "/customer",
   staff: "/staff",
   manager: "/manager",
-  owner: "/admin",
+  admin: "/admin",
 };
 
 // ─── Client-side helpers (localStorage simulation) ────────────────────────────
@@ -76,15 +76,18 @@ export function setSessionClient(user: AuthUser): void {
   if (typeof window === "undefined") return;
   localStorage.setItem(COOKIE_KEY, JSON.stringify(user));
   // Also set a plain cookie so middleware can read role
-  document.cookie = `auraspa_role=${user.role}; path=/; max-age=${60 * 60 * 24}`;
-  document.cookie = `auraspa_uid=${user.id}; path=/; max-age=${60 * 60 * 24}`;
+  const opts = [`path=/`, `max-age=${60 * 60 * 24}`, `SameSite=Lax`];
+  if (window.location.protocol === "https:") opts.push("Secure");
+  document.cookie = `auraspa_role=${user.role}; ${opts.join("; ")}`;
+  document.cookie = `auraspa_uid=${user.id}; ${opts.join("; ")}`;
 }
 
 export function clearSessionClient(): void {
   if (typeof window === "undefined") return;
   localStorage.removeItem(COOKIE_KEY);
-  document.cookie = "auraspa_role=; path=/; max-age=0";
-  document.cookie = "auraspa_uid=; path=/; max-age=0";
+  const delOpts = `path=/; max-age=0; SameSite=Lax`;
+  document.cookie = `auraspa_role=; ${delOpts}`;
+  document.cookie = `auraspa_uid=; ${delOpts}`;
 }
 
 // ─── Validation helpers ────────────────────────────────────────────────────────
@@ -106,7 +109,8 @@ export function validatePassword(password: string): string | null {
 
 export function validatePhone(phone: string): string | null {
   if (!phone.trim()) return "Vui lòng nhập số điện thoại.";
-  if (!/^(0|\+84)[0-9]{9}$/.test(phone.replace(/\s/g, "")))
+  // Allow spaces and dashes in input (e.g. "0912-345-678" or "+84 912 345 678")
+  if (!/^(0|\+84)[0-9]{9}$/.test(phone.replace(/[\s-]/g, "")))
     return "Số điện thoại không hợp lệ. VD: 0912345678";
   return null;
 }

@@ -153,7 +153,7 @@ export default function DashboardLayout({ navItems, children, title }: Props) {
             {/* Avatar */}
             <div
               className="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-xs cursor-pointer hover:opacity-80 transition-opacity"
-              onClick={() => router.push(`/${user?.role === "owner" ? "admin" : user?.role}/account`)}
+              onClick={() => router.push(`/${user?.role}/account`)}
             >
               {initials}
             </div>

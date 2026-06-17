@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #713323 !important;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f5ece7;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d9c1bc;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#ffcbbd",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "inverse-on-surface": "#f8efea",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-tertiary-container": "#d9d6d1",
+                        "primary-container": "#8e4a38",
+                        "on-secondary-container": "#745c00",
+                        "primary": "#713323",
+                        "secondary-container": "#fed65b",
+                        "error": "#ba1a1a",
+                        "tertiary": "#464642",
+                        "inverse-primary": "#ffb4a1",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary-fixed": "#ffdbd2",
+                        "surface-dim": "#e1d8d4",
+                        "surface-container": "#f5ece7",
+                        "outline-variant": "#d9c1bc",
+                        "surface-container-highest": "#e9e1dc",
+                        "outline": "#86736e",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#5e5d59",
+                        "background": "#fff8f5",
+                        "on-secondary-fixed": "#241a00",
+                        "on-background": "#1e1b18",
+                        "on-surface-variant": "#53433f",
+                        "on-primary-fixed": "#3a0a01",
+                        "surface": "#fff8f5",
+                        "secondary": "#735c00",
+                        "inverse-surface": "#34302c",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-surface": "#1e1b18",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface-tint": "#904b39",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb4a1",
+                        "surface-container-low": "#fbf2ed",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fff8f5",
+                        "surface-container-high": "#efe6e2",
+                        "on-primary-fixed-variant": "#723424",
+                        "surface-variant": "#e9e1dc",
+                        "secondary-fixed": "#ffe088"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-padding-mobile": "64px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "section-padding-desktop": "120px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["Manrope"],
+                        "headline-sm": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                        "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/20">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<span class="font-headline-sm text-headline-sm tracking-widest text-primary uppercase">AuraSpa</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Liệu Trình</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Hành Trình Sức Khỏ</a>
+<a class="text-primary font-semibold border-b-2 border-primary font-label-md text-label-md" href="#">ĐẶT LỊCH NGAY</a>
+</nav>
+<button class="md:hidden text-primary font-label-md text-label-md font-semibold">ĐẶT LỊCH NGAY</button>
+</div>
+</header>
+<main class="flex-grow pt-32 pb-section-padding-desktop">
+<div class="max-w-container-max mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Left Column: Imagery & Atmospheric Text -->
+<div class="lg:col-span-5 space-y-12">
+<div class="space-y-6">
+<h1 class="font-headline-lg text-headline-lg text-primary">Tìm Lại Sự Tĩnh Lặng</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Khám phá hành trình chăm sóc sức khỏe toàn diện tại AuraSpa. Mỗi liệu trình được thiết kế riêng để khơi dậy giác quan và phục hồi năng lượng tinh khôi.</p>
+</div>
+<div class="relative aspect-[4/5] overflow-hidden rounded-lg group shadow-2xl">
+<img class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" data-alt="A serene and luxurious spa treatment room bathed in soft, warm morning sunlight. The interior features natural wood textures, stone elements, and a minimalist aesthetic. A single white towel is neatly folded on a dark stone surface next to a branch of eucalyptus. The atmosphere is quiet, sophisticated, and deeply relaxing, reflecting a high-end wellness sanctuary with a palette of terracotta and warm beige." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_3SVYJtXSfdL6P6QqU7-Wi6zmv_iFUvr9Ru3jq_uCR7t7_WNXAZkef8uMjk6yvNZJPYIBd6PKZk2XP5Fb300rnPWWk-N9ajWdJbuVX6l013dK6le3_6jfswiIECJz5aovkwF_GXb-pW5urzDQafIXeRAcVMdXsZdWiYQ49_ti2ueXn7v6ButsAUqpuSy6VEpgUm6cL1dTCyBd0o7-Hz_GEtRQ2xpfqK23u0Fx-we7LzjR3UmpC07cGHR3GfDiFCEr7DSHsHgr7dQ"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="p-6 bg-surface-container border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="history">history</span>
+<p class="font-label-md text-label-md uppercase tracking-wider text-primary">Mở cửa hàng ngày</p>
+<p class="font-body-md text-body-md text-on-surface-variant">09:00 AM — 09:00 PM</p>
+</div>
+<div class="p-6 bg-surface-container border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-4" data-icon="location_on">location_on</span>
+<p class="font-label-md text-label-md uppercase tracking-wider text-primary">Địa điểm</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Quận 1, TP. Hồ Chí Minh</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Booking Form -->
+<div class="lg:col-span-7 bg-surface-container-low p-8 md:p-12 rounded-xl border border-outline-variant/10 shadow-sm">
+<form class="space-y-10" id="bookingForm">
+<!-- Step 1: Service Selection -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-label-md">1</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Chọn Dịch Vụ</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="relative flex flex-col p-5 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-high transition-all group">
+<input checked="" class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="service" type="radio" value="body-massage"/>
+<span class="font-label-md text-label-md text-primary mb-1">Massage Toàn Thân</span>
+<span class="text-sm text-on-surface-variant">60-90 Phút • Từ 1.200.000đ</span>
+</label>
+<label class="relative flex flex-col p-5 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-high transition-all group">
+<input class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="service" type="radio" value="facial"/>
+<span class="font-label-md text-label-md text-primary mb-1">Chăm Sóc Da Mặt Cao Cấp</span>
+<span class="text-sm text-on-surface-variant">45-75 Phút • Từ 950.000đ</span>
+</label>
+<label class="relative flex flex-col p-5 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-high transition-all group">
+<input class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="service" type="radio" value="detox"/>
+<span class="font-label-md text-label-md text-primary mb-1">Trị Liệu Thải Độc</span>
+<span class="text-sm text-on-surface-variant">120 Phút • Từ 2.500.000đ</span>
+</label>
+<label class="relative flex flex-col p-5 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-high transition-all group">
+<input class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="service" type="radio" value="reflexology"/>
+<span class="font-label-md text-label-md text-primary mb-1">Bấm Huyệt Chân</span>
+<span class="text-sm text-on-surface-variant">60 Phút • Từ 800.000đ</span>
+</label>
+</div>
+</section>
+<!-- Step 2: Date & Time -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-label-md">2</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Thời Gian</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-3">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant block">Chọn Ngày</label>
+<input class="w-full bg-transparent border-b border-outline-variant py-3 focus:border-primary transition-colors font-body-md" min="2024-05-20" type="date"/>
+</div>
+<div class="space-y-3">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant block">Giờ Hẹn</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 text-sm border border-outline-variant hover:border-primary transition-colors focus:bg-primary focus:text-white rounded-sm" type="button">09:00</button>
+<button class="py-2 text-sm border border-outline-variant hover:border-primary transition-colors focus:bg-primary focus:text-white rounded-sm" type="button">11:00</button>
+<button class="py-2 text-sm border border-outline-variant hover:border-primary transition-colors focus:bg-primary focus:text-white rounded-sm" type="button">14:00</button>
+<button class="py-2 text-sm border border-outline-variant hover:border-primary transition-colors focus:bg-primary focus:text-white rounded-sm" type="button">16:00</button>
+<button class="py-2 text-sm border border-outline-variant hover:border-primary transition-colors focus:bg-primary focus:text-white rounded-sm" type="button">18:00</button>
+<button class="py-2 text-sm border border-outline-variant hover:border-primary transition-colors focus:bg-primary focus:text-white rounded-sm" type="button">20:00</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Guest Details -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-label-md">3</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Thông Tin Khách Hàng</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Họ Và Tên</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 focus:ring-0 focus:border-primary transition-colors font-body-md placeholder:text-outline-variant/50" placeholder="Nguyễn Văn A" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Số Điện Thoại</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant py-3 focus:ring-0 focus:border-primary transition-colors font-body-md placeholder:text-outline-variant/50" placeholder="090 000 0000" type="tel"/>
+</div>
+<div class="space-y-1 md:col-span-2">
+<label class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Ghi Chú Đặc Biệt</label>
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant py-3 focus:ring-0 focus:border-primary transition-colors font-body-md placeholder:text-outline-variant/50 resize-none" placeholder="Yêu cầu về kỹ thuật viên, tình trạng sức khỏe..." rows="2"></textarea>
+</div>
+</div>
+</section>
+<!-- Action -->
+<div class="pt-6">
+<button class="w-full bg-primary text-white py-5 font-label-md text-label-md tracking-[0.2em] uppercase hover:bg-primary-container transition-all shadow-lg active:scale-95 duration-300" onclick="showSuccess()" type="button">
+                            XÁC NHẬN ĐẶT LỊCH
+                        </button>
+<p class="mt-4 text-center text-xs text-on-surface-variant opacity-60">Bằng việc xác nhận, bạn đồng ý với Điều khoản &amp; Chính sách của AuraSpa.</p>
+</div>
+</form>
+<!-- Success State (Hidden) -->
+<div class="hidden h-full flex flex-col items-center justify-center text-center space-y-8 py-12" id="successState">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center animate-bounce">
+<span class="material-symbols-outlined text-4xl" data-icon="check_circle">check_circle</span>
+</div>
+<div class="space-y-4">
+<h2 class="font-headline-md text-headline-md text-primary">Đặt Lịch Thành Công!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mx-auto">Cảm ơn bạn đã tin tưởng AuraSpa. Chúng tôi sẽ gửi thông tin xác nhận qua SMS trong giây lát.</p>
+</div>
+<div class="w-full p-6 bg-surface-container border border-outline-variant/20 rounded-lg text-left space-y-3">
+<div class="flex justify-between border-b border-outline-variant/10 pb-2">
+<span class="text-sm opacity-60">Mã đặt chỗ:</span>
+<span class="font-label-md">#AS-9821</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 pb-2">
+<span class="text-sm opacity-60">Ngày hẹn:</span>
+<span class="font-label-md">Thứ Sáu, 24 Tháng 5</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm opacity-60">Giờ:</span>
+<span class="font-label-md">14:00 PM</span>
+</div>
+</div>
+<button class="font-label-md text-label-md text-primary border-b border-primary hover:opacity-70 transition-opacity" onclick="location.reload()">QUAY LẠI TRANG CHỦ</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-16 md:py-24 w-full max-w-container-max mx-auto gap-8">
+<div class="space-y-4 text-center md:text-left">
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-widest uppercase">AuraSpa</span>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-70">Nơi vẻ đẹp và sự tĩnh lặng hội tụ.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Quyền riêng tư</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Phát triển bền vững</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Tuyển dụng</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Báo chí</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant/60">© 2024 AuraSpa Wellness. Bảo lưu mềi quyền.</p>
+</div>
+</footer>
+<script>
+        function showSuccess() {
+            const form = document.getElementById('bookingForm');
+            const success = document.getElementById('successState');
+            
+            form.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                form.classList.add('hidden');
+                success.classList.remove('hidden');
+                success.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-4', 'duration-700');
+            }, 300);
+        }
+
+        // Add subtle interaction for time slots
+        const timeButtons = document.querySelectorAll('button[type="button"]:not([onclick])');
+        timeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                timeButtons.forEach(b => b.classList.remove('bg-primary', 'text-white'));
+                btn.classList.add('bg-primary', 'text-white');
+            });
+        });
+    </script>
+</body></html>

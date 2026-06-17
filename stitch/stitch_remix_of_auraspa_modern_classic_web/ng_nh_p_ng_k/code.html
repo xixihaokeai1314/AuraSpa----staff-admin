@@ -1,0 +1,291 @@
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AuraSpa - Đăng nhập &amp; Đăng ký</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1e1b18",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e9e1dc",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#e1d8d4",
+                    "surface-bright": "#fff8f5",
+                    "primary": "#713323",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#e9c349",
+                    "primary-fixed-dim": "#ffb4a1",
+                    "outline": "#86736e",
+                    "outline-variant": "#d9c1bc",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#241a00",
+                    "inverse-on-surface": "#f8efea",
+                    "tertiary-container": "#5e5d59",
+                    "on-surface": "#1e1b18",
+                    "surface-container-low": "#fbf2ed",
+                    "on-primary-fixed": "#3a0a01",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#fed65b",
+                    "tertiary": "#464642",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "surface-container-high": "#efe6e2",
+                    "surface": "#fff8f5",
+                    "secondary-fixed": "#ffe088",
+                    "on-primary-container": "#ffcbbd",
+                    "surface-container": "#f5ece7",
+                    "on-surface-variant": "#53433f",
+                    "background": "#fff8f5",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#574500",
+                    "surface-variant": "#e9e1dc",
+                    "on-primary-fixed-variant": "#723424",
+                    "inverse-primary": "#ffb4a1",
+                    "primary-container": "#8e4a38",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-tertiary-container": "#d9d6d1",
+                    "surface-tint": "#904b39",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "secondary": "#735c00",
+                    "on-secondary-container": "#745c00",
+                    "primary-fixed": "#ffdbd2",
+                    "inverse-surface": "#34302c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "section-padding-mobile": "64px",
+                    "section-padding-desktop": "120px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-md": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>body {
+    background-color: #fff8f5;
+    color: #1e1b18;
+    overflow-x: hidden
+    }
+.auth-card {
+    box-shadow: 0 10px 30px rgba(45, 41, 38, 0.05)
+    }
+.input-elegant {
+    border: none;
+    border-bottom: 1px solid #d9c1bc;
+    background: transparent;
+    border-radius: 0;
+    padding: 12px 0;
+    transition: border-color 0.3s ease
+    }
+.input-elegant:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid #713323
+    }
+.grain-overlay {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBYTIAwWy9P5x8RBpcHcSnH8VjD15PU9IUJKJX7jQYXh7SsiSsyd3dDPHNOZogaaFAHr4_c2x48IMHEA4P-Km8cnIExxPPMHANf0VD6sr-4QSBF6mcxcYBmjZT4mWU9X9bf6qaxS1pPjjQ4cdiPbl3Yoz5M9HWe6MERix0OXjKoF1qeRE8_YKEwkNfGjzs4fri82xuTgTj6Gn9mLTHYclAP3RpZzFi5MH4fiQVEdxu5ZhVOdoY9j_UA_TFPVH3_AUtgmkz_I1Ssa2Q);
+    opacity: 0.03;
+    pointer-events: none
+    }</style>
+</head>
+<body class="font-body-md text-body-md min-h-screen flex items-center justify-center relative overflow-hidden">
+<!-- Atmospheric Background Decoration -->
+<div class="fixed inset-0 grain-overlay z-0"></div>
+<div class="absolute -top-40 -left-40 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute -bottom-40 -right-40 w-96 h-96 bg-secondary/5 rounded-full blur-[100px]"></div>
+<!-- Main Container -->
+<main class="w-full max-w-container-max mx-auto px-gutter z-10 py-12 flex items-center justify-center">
+<div class="w-full max-w-5xl flex flex-col md:flex-row bg-surface rounded-xl overflow-hidden auth-card border border-outline-variant/30" style="transform: translate(2.34px, -1.24px);">
+<!-- Left Side: Visual/Mood (Hidden on Mobile) -->
+<div class="hidden md:block md:w-1/2 relative min-h-[600px]">
+<img alt="AuraSpa Experience" class="absolute inset-0 w-full h-full object-cover" data-alt="A serene high-end spa interior featuring smooth limestone surfaces and warm ambient lighting reflecting off clear water. Soft terracotta and beige tones dominate the scene, creating an atmosphere of luxury and mental clarity. Natural sunlight filters through delicate linen curtains, illuminating organic wooden furniture and lush green plants in the background. The mood is exceptionally quiet and refined, embodying a sense of elevated serenity and professional wellness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6lRKoHR_iW-KFHj7QbzmWVNEnexjgzBUA4I266hyswsT3sQ8zXXpsF9cqSEMXrQeHLT9AK67g2QOy5pOBmy0lJsQheISu2VF723lOtdkwUH24p0yZOb9ebB98iBJHIt8vISCjcoHCVVYxgwU3ex_Nu3Eh7vr1HlPHsvQw5SGrCVXKT98-eosD-pAF4stUSLF8Mnr3BAbl2KDoSQe4dtal_GBeF3d0V7ZpU7PePt46HEt5jGtBOawtOZZSujd78QmKTfO72oFLtg0">
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+<div class="absolute inset-0 flex flex-col justify-end p-12 bg-gradient-to-t from-primary/40 to-transparent">
+<h2 class="font-display-lg text-headline-md text-white mb-4">Hành trình chữa lành.</h2>
+<p class="font-body-lg text-white/90 max-w-xs">Tìm lại sự cân bằng và tĩnh lặng trong từng khoảnh khắc tại AuraSpa.</p>
+</div>
+</div>
+<!-- Right Side: Auth Forms -->
+<div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center bg-surface relative">
+<!-- Brand Anchor -->
+<div class="flex justify-center mb-10">
+<h1 class="font-headline-sm text-headline-sm tracking-wide text-primary">AuraSpa</h1>
+</div>
+<!-- Form Switcher -->
+<div class="flex gap-8 border-b border-outline-variant/30 mb-10 overflow-hidden">
+<button class="pb-4 text-label-md font-label-md transition-all duration-300 border-b-2 border-primary text-primary" id="tab-login" onclick="switchTab('login')">Đăng nhập</button>
+<button class="pb-4 text-label-md font-label-md transition-all duration-300 border-b-2 border-transparent text-on-surface-variant hover:text-primary" id="tab-register" onclick="switchTab('register')">Đăng ký</button>
+</div>
+<!-- Login Form -->
+<div class="space-y-6 opacity-100 transition-opacity duration-500" id="form-login">
+<div class="space-y-6">
+<div class="relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Email</label>
+<input class="w-full input-elegant text-on-surface placeholder:text-on-surface-variant/40" placeholder="example@auraspa.com" type="email">
+</div>
+<div class="relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Mật khẩu</label>
+<input class="w-full input-elegant text-on-surface placeholder:text-on-surface-variant/40" placeholder="••••••••" type="password">
+<button class="absolute right-0 bottom-3 text-on-surface-variant/60 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary/20" type="checkbox">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Ghi nhớ tôi</span>
+</label>
+<a class="text-label-sm font-label-sm text-primary hover:underline" href="#">Quên mật khẩu?</a>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary font-label-md rounded-lg hover:bg-primary-container transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]">
+                        Đăng nhập ngay
+                    </button>
+<div class="relative py-4">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-outline-variant/30"></div></div>
+<div class="relative flex justify-center text-label-sm"><span class="px-4 bg-surface text-on-surface-variant/60">Hoặc tiếp tục với</span></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 border border-outline-variant/40 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="google">google</span>
+<span class="font-label-sm text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3 border border-outline-variant/40 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="facebook">social_leaderboard</span>
+<span class="font-label-sm text-on-surface">Facebook</span>
+</button>
+</div>
+</div>
+<!-- Register Form (Hidden by default) -->
+<div class="hidden opacity-0 space-y-6 transition-opacity duration-500" id="form-register">
+<div class="space-y-4">
+<div class="relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Họ và tên</label>
+<input class="w-full input-elegant text-on-surface placeholder:text-on-surface-variant/40" placeholder="Nguyễn Văn A" type="text">
+</div>
+<div class="relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Email</label>
+<input class="w-full input-elegant text-on-surface placeholder:text-on-surface-variant/40" placeholder="example@auraspa.com" type="email">
+</div>
+<div class="relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Mật khẩu</label>
+<input class="w-full input-elegant text-on-surface placeholder:text-on-surface-variant/40" placeholder="Tối thiểu 8 ký tự" type="password">
+</div>
+</div>
+<p class="text-[12px] text-on-surface-variant/70 leading-relaxed text-center">
+                        Bằng cách đăng ký, bạn đồng ý với <a class="text-primary hover:underline" href="#">Điều khoản Dịch vụ</a> và <a class="text-primary hover:underline" href="#">Chính sách Bảo mật</a> của chúng tôi.
+                    </p>
+<button class="w-full py-4 bg-primary text-on-primary font-label-md rounded-lg hover:bg-primary-container transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.98]">
+                        Tạo tài khoản
+                    </button>
+<div class="relative py-2">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-outline-variant/30"></div></div>
+<div class="relative flex justify-center text-label-sm"><span class="px-4 bg-surface text-on-surface-variant/60">Hoặc đăng ký bằng</span></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 border border-outline-variant/40 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="google">google</span>
+<span class="font-label-sm text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3 border border-outline-variant/40 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="apple">ios</span>
+<span class="font-label-sm text-on-surface">Apple</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Simple -->
+<footer class="fixed bottom-8 w-full text-center z-10 hidden md:block">
+<p class="text-label-sm text-on-surface-variant/50">© 2024 AuraSpa Wellness. Được thiết kế cho sự thanh thản tối cao.</p>
+</footer>
+<script>
+        function switchTab(type) {
+            const loginForm = document.getElementById('form-login');
+            const registerForm = document.getElementById('form-register');
+            const loginTab = document.getElementById('tab-login');
+            const registerTab = document.getElementById('tab-register');
+
+            if (type === 'login') {
+                // Style updates
+                loginTab.classList.add('border-primary', 'text-primary');
+                loginTab.classList.remove('border-transparent', 'text-on-surface-variant');
+                registerTab.classList.add('border-transparent', 'text-on-surface-variant');
+                registerTab.classList.remove('border-primary', 'text-primary');
+
+                // Visibility updates
+                registerForm.classList.add('opacity-0');
+                setTimeout(() => {
+                    registerForm.classList.add('hidden');
+                    loginForm.classList.remove('hidden');
+                    setTimeout(() => loginForm.classList.remove('opacity-0'), 10);
+                }, 300);
+            } else {
+                // Style updates
+                registerTab.classList.add('border-primary', 'text-primary');
+                registerTab.classList.remove('border-transparent', 'text-on-surface-variant');
+                loginTab.classList.add('border-transparent', 'text-on-surface-variant');
+                loginTab.classList.remove('border-primary', 'text-primary');
+
+                // Visibility updates
+                loginForm.classList.add('opacity-0');
+                setTimeout(() => {
+                    loginForm.classList.add('hidden');
+                    registerForm.classList.remove('hidden');
+                    setTimeout(() => registerForm.classList.remove('opacity-0'), 10);
+                }, 300);
+            }
+        }
+
+        // Add subtle mouse move effect for depth
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            const card = document.querySelector('.auth-card');
+            if (card) {
+                card.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+    </script>
+
+
+</body></html>

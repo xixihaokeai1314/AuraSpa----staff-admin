@@ -8,14 +8,14 @@ const ROLE_LABELS: Record<string, string> = {
   customer: "Khách hàng",
   staff: "Nhân viên",
   manager: "Quản lý chi nhánh",
-  owner: "Chủ sở hữu",
+  admin: "Chủ sở hữu",
 };
 
 const ROLE_HOME: Record<string, string> = {
   customer: "/customer",
   staff: "/staff",
   manager: "/manager",
-  owner: "/admin",
+  admin: "/admin",
 };
 
 export default function AccountDropdown() {

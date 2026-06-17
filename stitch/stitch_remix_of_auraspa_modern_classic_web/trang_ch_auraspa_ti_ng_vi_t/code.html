@@ -1,0 +1,371 @@
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#ffcbbd",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "inverse-on-surface": "#f8efea",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-tertiary-container": "#d9d6d1",
+                    "primary-container": "#8e4a38",
+                    "on-secondary-container": "#745c00",
+                    "primary": "#713323",
+                    "secondary-container": "#fed65b",
+                    "error": "#ba1a1a",
+                    "tertiary": "#464642",
+                    "inverse-primary": "#ffb4a1",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#574500",
+                    "primary-fixed": "#ffdbd2",
+                    "surface-dim": "#e1d8d4",
+                    "surface-container": "#f5ece7",
+                    "outline-variant": "#d9c1bc",
+                    "surface-container-highest": "#e9e1dc",
+                    "outline": "#86736e",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#5e5d59",
+                    "background": "#fff8f5",
+                    "on-secondary-fixed": "#241a00",
+                    "on-background": "#1e1b18",
+                    "on-surface-variant": "#53433f",
+                    "on-primary-fixed": "#3a0a01",
+                    "surface": "#fff8f5",
+                    "secondary": "#735c00",
+                    "inverse-surface": "#34302c",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-surface": "#1e1b18",
+                    "secondary-fixed-dim": "#e9c349",
+                    "surface-tint": "#904b39",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#ffb4a1",
+                    "surface-container-low": "#fbf2ed",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fff8f5",
+                    "surface-container-high": "#efe6e2",
+                    "on-primary-fixed-variant": "#723424",
+                    "secondary-fixed": "#ffe088"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "section-padding-mobile": "64px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "section-padding-desktop": "120px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "label-md": ["Manrope"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "body-md": ["Manrope"],
+                    "headline-sm": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "32px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500"}],
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .scrolling-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 248, 245, 0.8);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md dark:bg-surface-dim/80 border-b border-outline-variant/20">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-container-max mx-auto gap-4">
+<div class="flex items-center gap-4">
+<button class="text-primary hover:opacity-80 transition-opacity duration-300" onclick="document.getElementById('mobile-drawer').classList.remove('translate-x-full')">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<a class="font-headline-sm text-headline-sm tracking-widest text-primary dark:text-primary-fixed-dim uppercase" href="#">AuraSpa</a>
+</div>
+<nav class="hidden md:flex items-center gap-8"><a class="text-primary dark:text-primary-fixed font-semibold border-b-2 border-primary font-label-md text-label-md" href="#">TRANG CHỦ</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">DỊCH VỤ</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">GÓC LÀM ĐẸP</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-md text-label-md" href="#">TÀI KHOẢN</a></nav>
+<div class="relative group">
+  <button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md px-4 py-2">
+    <span class="material-symbols-outlined text-[20px]">language</span>
+    <span class="">TIẾNG VIỆT</span>
+    <span class="material-symbols-outlined text-[16px]">expand_more</span>
+  </button>
+  <div class="absolute right-0 mt-2 w-40 bg-surface border border-outline-variant/30 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
+    <div class="flex flex-col py-2">
+      <a href="#" class="px-4 py-2 text-label-md hover:bg-surface-container-high text-on-surface-variant">English</a>
+      <a href="#" class="px-4 py-2 text-label-md bg-surface-container-highest text-primary font-bold">Tiếng Việt</a>
+      <a href="#" class="px-4 py-2 text-label-md hover:bg-surface-container-high text-on-surface-variant">中文</a>
+      <a href="#" class="px-4 py-2 text-label-md hover:bg-surface-container-high text-on-surface-variant">Français</a>
+      <a href="#" class="px-4 py-2 text-label-md hover:bg-surface-container-high text-on-surface-variant">한국어</a>
+    </div>
+  </div>
+</div><button class="bg-primary text-on-primary px-6 py-2 font-label-md text-label-md hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+                BOOK NOW
+            </button>
+</div>
+</header>
+<!-- Mobile Drawer Overlay -->
+<div class="fixed inset-0 z-[60] transform translate-x-full transition-transform duration-300 ease-in-out" id="mobile-drawer">
+<div class="absolute inset-0 bg-on-background/20" onclick="document.getElementById('mobile-drawer').classList.add('translate-x-full')"></div>
+<aside class="absolute right-0 h-full w-80 bg-surface dark:bg-surface-container-low shadow-2xl p-6 flex flex-col gap-2">
+<div class="flex justify-between items-center mb-8">
+<span class="font-headline-sm text-headline-sm text-primary tracking-widest">AuraSpa</span>
+<button onclick="document.getElementById('mobile-drawer').classList.add('translate-x-full')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-2"><a class="flex items-center gap-4 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-6 py-3 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span> Trang chủ
+                </a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-tertiary-container px-6 py-3 hover:bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="spa">spa</span> Dịch vụ
+                </a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-tertiary-container px-6 py-3 hover:bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span> Góc làm đẹp
+                </a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-tertiary-container px-6 py-3 hover:bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span> Tài khoản
+                </a>
+<a class="flex items-center gap-4 text-on-surface-variant dark:text-on-tertiary-container px-6 py-3 hover:bg-surface-container-high font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span> Liên hệ
+                </a></nav>
+</aside>
+</div>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-[795px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 animate-in" style="opacity: 1; transform: translateY(0px); transition: 0.8s ease-out;">
+<img class="w-full h-full object-cover" data-alt="A serene luxury spa treatment room with soft warm lighting and natural textures. A massage table is neatly prepared with white linens and a single orchid. Large floor-to-ceiling windows reveal a lush, misty tropical garden in the background, creating a mood of absolute tranquility and high-end minimalism in terracotta and cream tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz79Jj8CnH1DcXrAis2bAi_RnQz5VtU2nkI1pvmWodVZVHEBlwjjSas5wiCahMUJTQB-wBqh3xZRtoFzmP9T0bWvSTv_5RZn0iIrZM4YU_EcvpOnityuxvuEuwhmmBbLh9p8Zmxmrr4PJl06zLchOzzVaJTKd1T6ZqI4o-7LP3uq-Y90gseFiZKUWYUeXeOvHYSrqzJLKNQYxfa_5-Rp5kFmwr72taWfYCgds6Sv9lbYBwIt7Xu1R_XNkTvpvPDv-Skeg5zLMKivc">
+<div class="absolute inset-0 bg-primary/10"></div>
+</div>
+<div class="relative z-10 text-center px-6 max-w-4xl animate-in" style="opacity: 1; transform: translateY(0px); transition: 0.8s ease-out;">
+<span class="font-label-md text-label-md text-primary tracking-[0.2em] mb-4 block animate-fade-in">CHÀO MỪNG BẠN ĐẾN VỚI AURASPA</span>
+<h1 class="font-display-lg text-[40px] md:text-display-lg text-primary mb-8 leading-tight">Nơi Tìm Lại Sự Bình Yên Trong Tâm Hồn</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">Tận hưởng những giây phút thư giãn tuyệt đối với các liệu pháp chăm sóc sức khỏe cao cấp trong không gian tĩnh lặng và tinh tế.</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-10 py-5 font-label-md text-label-md tracking-wider hover:opacity-90 transition-all active:scale-95 shadow-lg">KHÁM PHÁ NGAY</button>
+<button class="bg-transparent border border-primary text-primary px-10 py-5 font-label-md text-label-md tracking-wider hover:bg-primary hover:text-on-primary transition-all active:scale-95">ĐẶT LỊCH HẸN</button>
+</div>
+</div>
+</section>
+<!-- Our Story Teaser -->
+<section class="py-section-padding-mobile md:py-section-padding-desktop bg-surface-container-low overflow-hidden">
+<div class="max-w-container-max mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-gutter items-center animate-in" style="opacity: 1; transform: translateY(0px); transition: 0.8s ease-out;">
+<div class="md:col-span-5 mb-12 md:mb-0 relative">
+<div class="absolute -top-10 -left-10 w-40 h-40 border border-outline-variant/30 hidden md:block"></div>
+<img class="w-full aspect-[4/5] object-cover relative z-10" data-alt="Close-up of smooth, warm massage stones arranged on a wooden surface with a soft linen cloth nearby. Gentle sunlight streams through a window, highlighting the tactile textures of the stones and wood. The aesthetic is organic and sophisticated, emphasizing a natural wellness philosophy with warm, earthy color tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDSfBY6rutMdvRHxpzoBEn4pV_qwc6sTK5Xpemq0izK0lW65MV0Y80sv_RGp167-5Rb2Qj4I6_FHirvoDrsGXoc353-gbHSxss9t0KmZ42j4dn-JdLw3kmbSmFiAWx0NQW6sMzpfoARlRaOeUQUechkb9kcMtp4hXJmsC11O1LP8nC8fFgysSJioVYvNQYQ-MpMEOog1ktPkq1TKsmmPTXaiY2yeoMJNJ8kEPSUTmqRtN105vkPdppeFWzANZi8w0g-TnONi0Oqak">
+</div>
+<div class="md:col-span-6 md:col-start-7">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-8">Câu Chuyện Của Chúng Tôi</h2>
+<div class="w-16 h-1 bg-secondary-container mb-8"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                        Tại AuraSpa, chúng tôi tin rằng vẻ đẹp thật sự bắt nguồn từ một tâm trí thư thái và một cơ thể khỏe mạnh. Triết lý của chúng tôi là sự kết hợp hoàn hảo giữa kỹ thuật cổ truyền và công nghệ hiện đại.
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                        Mỗi liệu trình tại AuraSpa không chỉ là một dịch vụ, mà là một hành trình đánh thức các giác quan, giúp bạn tái tạo năng lượng và tìm lại sự cân bằng trong cuộc sống hối hả.
+                    </p>
+<a class="inline-flex items-center gap-2 text-primary font-label-md text-label-md group" href="#">
+                        TÌM HIỂU THÊM VỀ CHÚNG TÔI 
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Featured Treatments - Bento Grid Style -->
+<section class="py-section-padding-mobile md:py-section-padding-desktop bg-surface">
+<div class="max-w-container-max mx-auto px-6" style="opacity: 0; transform: translateY(20px); transition: 0.8s ease-out;">
+<div class="text-center mb-16">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase">Dịch vụ nổi bật</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mt-2">Liệu Pháp Đánh Thức Giác Quan</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-gutter h-auto md:h-[700px]">
+<!-- Massage Card -->
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden bg-surface-container-highest cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A professional massage therapy scene featuring high-end spa equipment and a serene atmosphere. Soft golden light illuminates the room, highlighting the clean terracotta lines and warm wooden accents. The focus is on a sense of professional trust and deep relaxation, embodying the elevated serenity brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDeIGcBnmmtXZ3dsz55NrmLqyTxUwKrCYsIkYbOwQ84br9uLTOlWWX0eUi5YlXOQAxFmk3VsFf-6mdmrmahnDk_rf1UIWEMRyaMz71o-Zcz4EZF--U9LMU96Ipk7_mZ0iPcqywmbK4_t7s1S4jmwstYyFIt0unIWtfYnV2fwPZPkkykyJhK4ugd3B71TJ9oXmbWsRccUMd2mEGopk4zGSjcKohfaqt5vlXe9qx1W0rAEgSF3r4K1FhqUmNedZNw6OrJiFGdlQOLew">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 text-on-primary">
+<span class="font-label-sm text-label-sm mb-2 block opacity-80">PHỔ BIẾN NHẤT</span>
+<h3 class="font-headline-sm text-headline-sm mb-3">Massage Thụy Điển</h3>
+<p class="font-body-md text-body-md opacity-90 max-w-sm mb-6">Giải tỏa mọi căng thẳng cơ bắp và lưu thông khí huyết với kỹ thuật xoa bóp chuyên sâu.</p>
+<button class="bg-white text-primary px-6 py-2 font-label-md text-label-md">XEM CHI TIẾT</button>
+</div>
+</div>
+<!-- Facial Card -->
+<div class="md:col-span-2 md:row-span-1 relative group overflow-hidden bg-surface-container cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-end facial treatment in progress with minimalist professional equipment and natural skincare products visible. The lighting is soft and clinical yet warm, suggesting both expertise and luxury. The color palette features whites and soft terracottas, creating a bright and airy atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26lsM7QJ9kwHz2AGxG7UCiN29imJVyw_D8NLRU4QtOABIPN0F-dBHmxXE-l_JAg2a3DbSEf3RRqn0384o0jMV-vaQUuoM12LcUUvL7qgddj73XwfTazLEkmiWLMwWvP2aq46bEZuQYqS4dHkECAHbNFGFQ17esUGKHpJ482ISrdIWXdU-C0_bxLNdcUBQhQJ21dpMHU23aEQwFz7n0zdg03g8_d62ZXVCYAQFqIdaBD4HbKskh2zNhR_Yy-2e5xCwrvMJR1AMnQQ">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<div class="glass-effect p-6 inline-block max-w-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">Chăm Sóc Da Mặt</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Phục hồi vẻ rạng rỡ cho làn da với tinh chất thảo dược thiên nhiên.</p>
+</div>
+</div>
+</div>
+<!-- Body Scrub Card -->
+<div class="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-surface-container-high cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up of a premium body scrub product with organic textures like sea salt and botanical oils. The composition is artistic and minimalist, set against a warm beige background that reflects luxury and mental clarity. Every detail suggests a tactile, sensory experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrzY1j3n5ptG3tdy5Su-kzm81gQRb5PSoAeJ1B_bZk6Aj73Oi8aiOJhDjdpLpfSmF9nERp4iUzxlcHl8jRuuor5KsFweCaNTZeLKhGYpazx-V5gnfmOYoFgPdYVhAz2Aiiw87bcihvnA9GpZ76gQPXGQXnrirOxlmj8gAlo6hMRcdjXv5KPbwy5rQkfESFrwV8GtWLex4PFKicNdGrRmg8-PaT2NQQVxtn-HVIv3ZKncVjZ2esKkCE0OJT6WCUYvjDnQVEkBrbQxo">
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-white font-label-md text-label-md border-b border-white pb-1">TẨY TẾ BÀO CHẾT</span>
+</div>
+<div class="absolute bottom-4 left-4 text-white group-hover:hidden">
+<h3 class="font-label-md text-label-md">Tẩy Tế Bào Chết</h3>
+</div>
+</div>
+<!-- Package Card -->
+<div class="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-primary cursor-pointer flex flex-col justify-center p-8 text-center text-on-primary">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Gói Combo</h3>
+<p class="font-body-md text-body-md opacity-80 mb-4">Tiết kiệm hơn khi sử dụng gói liệu trình đặc biệt.</p>
+<span class="font-label-md text-label-md underline">XEM BẢNG GIÁ</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-padding-mobile md:py-section-padding-desktop bg-surface-container-highest relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform translate-x-20" style="opacity: 0; transform: translateY(20px); transition: 0.8s ease-out;"></div>
+<div class="max-w-4xl mx-auto px-6 text-center relative z-10" style="opacity: 0; transform: translateY(20px); transition: 0.8s ease-out;">
+<h2 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary mb-8">Bắt Đầu Hành Trình Thư Giãn Của Bạn</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+                    Đặt lịch ngay hôm nay để nhận ưu đãi 20% cho lần đầu tiên trải nghiệm dịch vụ tại AuraSpa. Không gian yên bình đang chờ đón bạn.
+                </p>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="bg-primary text-on-primary px-12 py-6 font-label-md text-label-md hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95 uppercase tracking-widest" href="#">
+                        ĐẶT LỊCH NGAY
+                    </a>
+<a class="bg-transparent border-2 border-outline text-on-surface px-12 py-6 font-label-md text-label-md hover:bg-surface-container-low transition-all active:scale-95 uppercase tracking-widest flex items-center gap-3" href="tel:+84123456789">
+<span class="material-symbols-outlined" data-icon="call">call</span> 0123 456 789
+                    </a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-16 md:py-24 w-full max-w-container-max mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface tracking-widest uppercase">AuraSpa</span>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-tertiary-fixed-dim max-w-xs text-center md:text-left">
+                    Kiến tạo không gian nghỉ dưỡng tinh tế giữa lòng thành phố.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-12">
+<div class="flex flex-col items-center md:items-start gap-4">
+<h4 class="font-label-md text-label-md text-primary uppercase">Khám Phá</h4>
+<nav class="flex flex-col items-center md:items-start gap-2"><a class="font-label-sm text-label-sm text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors" href="#">Chính sách bảo mật</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors" href="#">Phát triển bền vững</a></nav>
+</div>
+<div class="flex flex-col items-center md:items-start gap-4">
+<h4 class="font-label-md text-label-md text-primary uppercase">Khám Phá</h4>
+<nav class="flex flex-col items-center md:items-start gap-2"><a class="font-label-sm text-label-sm text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors" href="#">Chính sách bảo mật</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant dark:text-tertiary-fixed-dim hover:text-primary transition-colors" href="#">Phát triển bền vững</a></nav>
+</div>
+</div>
+<div class="flex flex-col items-center md:items-end gap-6">
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="facebook">social_leaderboard</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-tertiary-fixed-dim">
+                    © 2024 AuraSpa Wellness. All Rights Reserved.
+                </p>
+</div>
+</div>
+</footer>
+<!-- Floating Booking Widget -->
+<div class="fixed bottom-8 right-8 z-40 hidden md:block">
+<button class="bg-tertiary text-on-tertiary border border-[#D4AF37] px-6 py-4 rounded-full shadow-2xl flex items-center gap-3 group transition-transform hover:-translate-y-1">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">ĐẶT LỊCH TRỰC TUYẾN</span>
+</button>
+</div>
+<script>
+        // Simple animation logic for interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.95)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+
+
+</body></html>

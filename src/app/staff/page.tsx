@@ -8,6 +8,13 @@ import {
   AppointmentStatus,
 } from "@/lib/mock-data";
 
+// Mock internal messages from receptionist
+const RECEPTION_MESSAGES = [
+  { id: "m1", from: "Thanh Hằng (Lễ tân)", time: "09:15", text: "Đã chuẩn bị tinh dầu sả chanh cho VIP 02. Khách yêu cầu thêm khăn ấm.", read: false },
+  { id: "m2", from: "Thanh Hằng (Lễ tân)", time: "08:45", text: "Chị Hoàng Mai hỏi có thể đổi sang phòng Deluxe 03 không?", read: false },
+  { id: "m3", from: "Hệ thống", time: "08:00", text: "Bắt đầu ca trực: 08:00 - 17:00. Chúc một ngày làm việc hiệu quả.", read: true },
+];
+
 export default function StaffDashboard() {
   const { user } = useAuth();
   const [selectedAppt, setSelectedAppt] = useState<string | null>("ap003");
@@ -15,6 +22,9 @@ export default function StaffDashboard() {
   const [checkInSearch, setCheckInSearch] = useState("");
   const [checkInError, setCheckInError] = useState("");
   const [toast, setToast] = useState("");
+  const [messages, setMessages] = useState(RECEPTION_MESSAGES);
+  const [msgInput, setMsgInput] = useState("");
+  const unreadCount = messages.filter((m) => !m.read).length;
 
   const myAppts = appts.filter((a) => a.technicianId === user?.id || user?.role === "staff");
 
@@ -326,6 +336,78 @@ export default function StaffDashboard() {
                   <p className="font-label-sm text-label-sm text-on-surface-variant text-xs mt-1">{s.label}</p>
                 </div>
               ))}
+            </div>
+
+            {/* ── Messenger từ Lễ tân ── */}
+            <div className="bg-tertiary rounded-2xl relative overflow-hidden">
+              <div className="relative z-10 p-4">
+                <h3 className="font-label-md text-label-md text-on-tertiary mb-3 flex items-center gap-2 uppercase tracking-widest">
+                  <span className="material-symbols-outlined" style={{ fontSize: 16 }}>chat</span>
+                  Tin nhắn Lễ tân
+                  {unreadCount > 0 && (
+                    <span className="ml-auto bg-error text-on-error text-xs font-bold px-2 py-0.5 rounded-full">
+                      {unreadCount}
+                    </span>
+                  )}
+                </h3>
+
+                <div className="space-y-2 max-h-40 overflow-y-auto mb-3">
+                  {messages.map((msg) => (
+                    <div
+                      key={msg.id}
+                      onClick={() => setMessages((prev) => prev.map((m) => m.id === msg.id ? { ...m, read: true } : m))}
+                      className={`p-2.5 rounded-xl backdrop-blur-md cursor-pointer transition-opacity ${
+                        msg.read ? "bg-white/10 opacity-60" : "bg-white/15"
+                      }`}
+                    >
+                      <div className="flex justify-between items-center mb-1">
+                        <p className="font-label-sm text-label-sm text-on-tertiary font-bold text-xs">{msg.from}</p>
+                        <p className="text-on-tertiary opacity-60" style={{ fontSize: 10 }}>{msg.time}</p>
+                      </div>
+                      <p className="font-label-sm text-label-sm text-on-tertiary opacity-90 text-xs">{msg.text}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Quick reply input */}
+                <div className="flex gap-2">
+                  <input
+                    className="flex-1 bg-white/10 border border-white/20 rounded-full px-3 py-1.5 text-on-tertiary placeholder-on-tertiary/50 text-xs focus:outline-none focus:border-white/40 transition-colors"
+                    placeholder="Trả lời nhanh..."
+                    value={msgInput}
+                    onChange={(e) => setMsgInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && msgInput.trim()) {
+                        setMessages((prev) => [
+                          { id: `m${Date.now()}`, from: "Tôi", time: new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }), text: msgInput.trim(), read: true },
+                          ...prev,
+                        ]);
+                        setMsgInput("");
+                      }
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      if (!msgInput.trim()) return;
+                      setMessages((prev) => [
+                        { id: `m${Date.now()}`, from: "Tôi", time: new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }), text: msgInput.trim(), read: true },
+                        ...prev,
+                      ]);
+                      setMsgInput("");
+                    }}
+                    className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-on-tertiary hover:bg-white/30 transition-colors"
+                  >
+                    <span className="material-symbols-outlined" style={{ fontSize: 16 }}>send</span>
+                  </button>
+                </div>
+              </div>
+              {/* Decorative icon */}
+              <span
+                className="material-symbols-outlined absolute -right-4 -bottom-4 text-on-tertiary opacity-5 pointer-events-none"
+                style={{ fontSize: 80 }}
+              >
+                forum
+              </span>
             </div>
           </div>
         </section>
