@@ -33,7 +33,25 @@ export default function AccountDropdown() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  if (!user) return null;
+  // Not logged in → show Login / Register buttons
+  if (!user) {
+    return (
+      <div className="flex items-center gap-3">
+        <Link
+          href="/login"
+          className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+        >
+          Đăng nhập
+        </Link>
+        <Link
+          href="/login"
+          className="bg-primary text-on-primary px-5 py-2 rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all"
+        >
+          Đăng ký
+        </Link>
+      </div>
+    );
+  }
 
   const initials = user.name
     .split(" ")

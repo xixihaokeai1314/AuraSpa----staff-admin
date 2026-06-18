@@ -1,63 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
-  useEffect(() => {
-    const handleScroll = () => {
-      const nav = document.querySelector("nav");
-      if (!nav) return;
-      if (window.scrollY > 50) {
-        nav.classList.add("py-2");
-        nav.classList.remove("py-4");
-        nav.classList.add("shadow-md");
-      } else {
-        nav.classList.add("py-4");
-        nav.classList.remove("py-2");
-        nav.classList.remove("shadow-md");
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <>
+    <Navbar />
     <main className="bg-background text-on-surface selection:bg-primary-fixed selection:text-primary">
-
-      {/* Top Navigation Bar */}
-      <nav className="fixed top-0 w-full z-50 glass-effect border-b border-outline-variant shadow-sm transition-all duration-300">
-        <div className="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
-          <div className="flex items-center gap-8">
-            <a className="font-headline-md text-headline-md font-medium tracking-tight text-primary" href="/">AuraSpa</a>
-            <div className="hidden md:flex gap-8 items-center">
-              <a className="font-label-md text-label-md text-primary font-semibold border-b-2 border-primary pb-1" href="/">Trang chủ</a>
-              <a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="/services">Dịch vụ</a>
-              <a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Câu chuyện thương hiệu</a>
-              <a className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="/contact">Liên hệ</a>
-            </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="group relative">
-              <button className="flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">
-                <span className="material-symbols-outlined text-sm">language</span>
-                VI
-              </button>
-              <div className="absolute top-full right-0 mt-2 w-32 bg-surface shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 border border-outline-variant py-2">
-                <a className="block px-4 py-2 font-label-sm text-label-sm hover:bg-surface-container-low" href="#">English (EN)</a>
-                <a className="block px-4 py-2 font-label-sm text-label-sm hover:bg-surface-container-low" href="#">简体中文 (ZH)</a>
-                <a className="block px-4 py-2 font-label-sm text-label-sm hover:bg-surface-container-low" href="#">Français (FR)</a>
-                <a className="block px-4 py-2 font-label-sm text-label-sm hover:bg-surface-container-low" href="#">한국어 (KO)</a>
-              </div>
-            </div>
-            <div className="flex gap-4 items-center">
-              <a className="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity" href="/login">Đăng nhập</a>
-              <a className="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all duration-200" href="/login">Đăng ký</a>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <header className="relative h-screen flex items-center overflow-hidden">

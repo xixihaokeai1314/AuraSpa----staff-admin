@@ -13,7 +13,6 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const translations = {
-  // Vietnamese
   vi: {
     "common.home": "Trang chủ",
     "common.services": "Dịch vụ",
@@ -31,7 +30,6 @@ const translations = {
     "footer.newsletter": "BẢN TIN",
     "footer.subscribeNewsletter": "Nhận tin tức spa hàng tuần",
   },
-  // English
   en: {
     "common.home": "Home",
     "common.services": "Services",
@@ -49,7 +47,6 @@ const translations = {
     "footer.newsletter": "NEWSLETTER",
     "footer.subscribeNewsletter": "Get weekly spa updates",
   },
-  // Chinese
   zh: {
     "common.home": "首页",
     "common.services": "服务",
@@ -74,11 +71,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Get saved language from localStorage
-    const saved = localStorage.getItem("language") as Language | null;
-    if (saved && ["vi", "en", "zh"].includes(saved)) {
-      setLanguageState(saved);
+    const saved = localStorage.getItem("language");
+    
+    if (saved === "vi" || saved === "en" || saved === "zh") {
+      setLanguageState(saved as Language);
     }
+    
     setMounted(true);
   }, []);
 
@@ -91,13 +89,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     return (translations[language] as Record<string, string>)[key] || key;
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
+      <div style={{ visibility: mounted ? "visible" : "hidden", display: "contents" }}>
+        {children}
+      </div>
     </LanguageContext.Provider>
   );
 }

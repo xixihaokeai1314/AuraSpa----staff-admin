@@ -146,6 +146,9 @@ export default function BookPage() {
             <Link href="/" className="font-headline-sm text-headline-sm text-primary tracking-wide">AuraSpa</Link>
           </div>
           <div className="flex items-center gap-4">
+            <Link href="/services" className="hidden md:block font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">
+              Dịch vụ
+            </Link>
             <Link href="/customer" className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">
               Quay lại
             </Link>

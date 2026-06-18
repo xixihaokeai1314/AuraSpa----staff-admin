@@ -4,6 +4,7 @@ import { useState } from "react";
 import { BRANCHES } from "@/lib/mock-data";
 import { validateContactForm } from "@/lib/validators";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
@@ -14,7 +15,6 @@ export default function ContactPage() {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
     setFormState((prev) => ({ ...prev, [name]: value }));
-    // Clear error for this field when user starts typing
     if (errors[name]) {
       setErrors((prev) => {
         const newErrors = { ...prev };
@@ -26,17 +26,13 @@ export default function ContactPage() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
     const validationErrors = validateContactForm(formState);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-    
     setIsSubmitting(true);
     setErrors({});
-    
-    // Simulate submission
     setTimeout(() => {
       setStatus("✓ Đã gửi yêu cầu. Chúng tôi sẽ liên hệ bạn sớm nhất!");
       setFormState({ name: "", email: "", message: "" });
@@ -46,6 +42,7 @@ export default function ContactPage() {
 
   return (
     <>
+    <Navbar />
     <main className="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-primary min-h-screen">
       <section className="bg-surface-container-lowest pt-24 pb-16">
         <div className="max-w-container-max mx-auto px-gutter">

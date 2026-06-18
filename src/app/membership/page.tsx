@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function MembershipPage() {
-  return (    <>    <main className="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-primary min-h-screen pb-24">
+  return (    <>    <Navbar /><main className="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-primary min-h-screen pb-24">
       {/* Hero Section */}
       <section className="bg-surface-container-lowest pt-24 pb-16">
         <div className="max-w-container-max mx-auto px-gutter">

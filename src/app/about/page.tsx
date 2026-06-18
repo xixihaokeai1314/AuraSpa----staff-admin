@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function AboutPage() {
   return (
     <>
+    <Navbar />
     <main className="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-primary min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[500px] flex items-center overflow-hidden bg-surface-container-lowest">

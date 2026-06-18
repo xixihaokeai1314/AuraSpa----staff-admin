@@ -56,7 +56,7 @@ export default function AccountPage() {
     <div className="p-6 max-w-2xl mx-auto">
       {toast && <div className="fixed top-20 right-6 z-50 bg-primary text-on-primary px-5 py-3 rounded-xl shadow-lg font-label-md text-label-md">{toast}</div>}
 
-      <h1 className="font-headline-md text-headline-md text-primary mb-6">Quản lý tài khoản (UC-04)</h1>
+      <h1 className="font-headline-md text-headline-md text-primary mb-6">Quản lý tài khoản</h1>
 
       {/* Avatar + role */}
       <div className="bg-white rounded-2xl border border-outline-variant/20 p-6 mb-6 flex items-center gap-5">

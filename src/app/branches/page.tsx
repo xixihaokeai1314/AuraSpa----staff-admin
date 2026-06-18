@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { BRANCHES } from "@/lib/mock-data";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function BranchesPage() {
   const [query, setQuery] = useState("");
@@ -18,6 +19,7 @@ export default function BranchesPage() {
 
   return (
     <>
+    <Navbar />
     <main className="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-primary min-h-screen">
       <section className="bg-surface-container-lowest pt-24 pb-16">
         <div className="max-w-container-max mx-auto px-gutter">

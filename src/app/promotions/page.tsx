@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { PROMOTIONS, SERVICES, formatCurrency } from "@/lib/mock-data";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 function getServiceSummary(serviceIds: string[]) {
   if (!serviceIds.length) return "Tất cả dịch vụ";
@@ -12,6 +13,7 @@ function getServiceSummary(serviceIds: string[]) {
 export default function PromotionsPage() {
   return (
     <>
+    <Navbar />
     <main className="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-primary min-h-screen">
       <section className="bg-surface-container-lowest pt-24 pb-16">
         <div className="max-w-container-max mx-auto px-gutter">
